@@ -165,13 +165,13 @@ namespace BasicHelicopterController
         private void HandleInputs()
         {
             // _roll
-        	_roll = Input.GetAxis("Roll");
+            _roll = Input.GetAxis("Roll");
 
             // _pitch
-        	_pitch = Input.GetAxis("Pitch"); 
+            _pitch = Input.GetAxis("Pitch"); 
 
             // _yaw
-        	_yaw = Input.GetAxis("Yaw");
+            _yaw = Input.GetAxis("Yaw");
 
             // _rotorCheck false
             _rotorCheck = false;
