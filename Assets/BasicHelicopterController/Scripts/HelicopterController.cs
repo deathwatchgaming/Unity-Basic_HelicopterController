@@ -123,16 +123,16 @@ namespace BasicHelicopterController
         private void Update()
         {
             // HandleInputs
-        	HandleInputs();
+            HandleInputs();
             
             // _rotorsTransformTop
-        	_rotorsTransformTop.Rotate(Vector3.up * (_maxThrust * _throttle) * _rotorSpeedModifier);
+            _rotorsTransformTop.Rotate(Vector3.up * (_maxThrust * _throttle) * _rotorSpeedModifier);
            
             // _rotorsTransformTail
             _rotorsTransformTail.Rotate(Vector3.left * _throttle * _rotorSpeedModifier);
             
             // _audioSource volume
-        	_audioSource.volume = (_throttle * 0.01f);  
+            _audioSource.volume = (_throttle * 0.01f);  
 
             // if _rotorCheck is true
             if (_rotorCheck == true)
@@ -177,10 +177,10 @@ namespace BasicHelicopterController
             _rotorCheck = false;
             
             // if Input GetKey LeftControl
-        	if (Input.GetKey(KeyCode.LeftControl))
-        	{
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
                 // _throttle
-        		_throttle += Time.deltaTime * _throttleAmount;
+                _throttle += Time.deltaTime * _throttleAmount;
                 
                 // if Input GetKeyDown LeftControl
                 if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -190,13 +190,13 @@ namespace BasicHelicopterController
 
                 } // close if Input GetKeyDown LeftControl
 
-        	} // close if Input GetKey LeftControl
+            } // close if Input GetKey LeftControl
             
             // else if Input GetKey LeftShift
-        	else if (Input.GetKey(KeyCode.LeftShift))
-        	{
+            else if (Input.GetKey(KeyCode.LeftShift))
+            {
                 // _throttle
-        		_throttle -= Time.deltaTime * _throttleAmount;
+                _throttle -= Time.deltaTime * _throttleAmount;
                 
                 // if Input GetKeyDown LeftShift
                 if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -206,10 +206,10 @@ namespace BasicHelicopterController
 
                 } // close if Input GetKeyDown LeftShift
 
-        	} // close else if Input GetKey LeftShift 
+            } // close else if Input GetKey LeftShift 
             
             // _throttle
-        	_throttle = Mathf.Clamp(_throttle, 0f, 100f);
+            _throttle = Mathf.Clamp(_throttle, 0f, 100f);
 
         } // close private void HandleInputs
 
@@ -217,13 +217,13 @@ namespace BasicHelicopterController
         private void PlayRotorSound()
         {
             // _audioSource clip
-    		_audioSource.clip = _rotorSound;
+            _audioSource.clip = _rotorSound;
 
             // _audioSource loop is true
             _audioSource.loop = true; 
 
             // _audioSource Play      
-    		_audioSource.Play();
+            _audioSource.Play();
 
         } // close private void PlayRotorSound 
 
