@@ -326,7 +326,18 @@ instead. So, in saying such, your specific settings should simply look like such
 
 Mass: 360
 
-Automatic Center Of Mass: False (Bool unchecked)
+Automatic Center Of Mass: False (Bool unchecked) *
+
+Center Of Mass: x: 0 y: 0.7 z: 1 *
+
+* Further Note: If using Unity 2021 LTS, 2021 does not have automaticCenterOfMass 
+thus since you commented out previously in the script:
+ 
+//_rigidbody.automaticCenterOfMass = false;
+
+You do not need to uncheck "Automatic Center Of Mass Bool" as such is not present.
+Also you will not need to modify "Center Of Mass" as such is not needed in 2021 &  
+the local will be auto modified via script.
 
 -----------------------------------------------------------------------------------
 
