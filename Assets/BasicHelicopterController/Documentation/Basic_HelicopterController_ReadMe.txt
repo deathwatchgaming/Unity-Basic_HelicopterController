@@ -214,8 +214,8 @@ now look correct.
 mkay, one last detail just to clean up on that as there are already textures in 
 the "textures" directory, you may see some duplicates, mkay only delete the first 
 in order of any such duplicates as the second of each should be what you extracted 
-and used. Thus if you are a mildly a bit ocd, this will tidy up things for your 
-mind if that makes sense, haha! ;P
+and used. Thus if you are mildly a bit OCD, this will just simply tidy up things 
+for your mind if that makes sense, though one is sure such does, haha! ;P
 
 ok, you can now add the model prefab: MD-500 "(MD-500.fbx) to your scene"
 
