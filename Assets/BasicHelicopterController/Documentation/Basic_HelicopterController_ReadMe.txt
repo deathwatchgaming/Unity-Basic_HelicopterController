@@ -6,21 +6,19 @@ Description:
 Create a basic Helicopter Controller for your Unity projects.
 
 Controls: 
+---------
 
 Roll: A & D
 Pich: S & W
 Yaw:  Q & E
 
--Throttle: LeftShift
-+Throttle: LeftControl
-
+- Throttle: LeftShift
++ Throttle: LeftControl
 
 Manual Setup Instruction:
 -------------------------
 
 * Simply follow the instruction for manual setup found below.
-
-Note: Setup steps coming as soon as further free time allows..... 
 
 -----------------------------------------------------------------------------------
 
