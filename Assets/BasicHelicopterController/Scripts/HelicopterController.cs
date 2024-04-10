@@ -85,6 +85,7 @@ namespace BasicHelicopterController
             // _rotorsTransformTail
             [SerializeField] private Transform _rotorsTransformTail;
 
+        // Awake is called even if the script is disabled
         // Awake
         private void Awake()
         {
@@ -111,14 +112,9 @@ namespace BasicHelicopterController
             // _audioSource GetComponent AudioSource
             _audioSource = GetComponent<AudioSource>();
 
-            // Cursor lockState is CursorLockMode Locked
-            Cursor.lockState = CursorLockMode.Locked;
-
-            // Cursor.visible is false
-            Cursor.visible = false; 
-
         } // close private void Awake
-
+        
+        // Update is called every frame
         // private void Update
         private void Update()
         {
@@ -143,7 +139,8 @@ namespace BasicHelicopterController
             } // close if _rotorCheck is true
 
         } // close private void Update
-        
+
+        // FixedUpdate is called every physics step
         // private void FixedUpdate
         private void FixedUpdate()
         {
