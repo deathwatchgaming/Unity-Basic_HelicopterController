@@ -346,11 +346,12 @@ Optional: Cursor Lock
 
 -----------------------------------------------------------------------------------
 
-If you would like Cursor Lock, please note that such was recently removed from the HelicopterController script as such made sense to remove such and add an optional 
-CursorLock.cs script if needed.
+If you would like Cursor Lock, please note that such was recently removed from 
+the HelicopterController script as such made sense to remove such and add an 
+optional CursorLock.cs script if needed.
 
-If such so is desired, well, you can simply attach the CursorLock.cs script to the 
-player / controller.
+If such so is desired, well, you can simply attach the CursorLock.cs script to 
+the player / controller.
 
 -----------------------------------------------------------------------------------
 
