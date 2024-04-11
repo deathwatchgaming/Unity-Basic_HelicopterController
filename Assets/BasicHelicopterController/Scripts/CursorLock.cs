@@ -16,10 +16,10 @@ using UnityEngine;
 // namespace CursorLockState
 namespace CursorLockState
 {
-    // public class HelicopterController
+    // public class CursorLock
     public class CursorLock : MonoBehaviour 
     {
-        // private bool CursorLockEnabled
+        // private bool CursorLockEnabled is true
         [SerializeField] private bool CursorLockEnabled = true;
 
         // Start is called before the first frame update
