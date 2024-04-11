@@ -1,11 +1,11 @@
 # Unity-Basic_HelicopterController
  Add a "Basic HelicopterController" to your Unity projects
 
-ReadMe file found @:
+"ReadMe" file found @:
 https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Documentation/Basic_HelicopterController_ReadMe.txt 
 
 
- NOTE: 1 Helicopter model "MD-500 Defender Helicopter" included for setup and usage example:
+ NOTE: 1 Helicopter model being: "MD-500 Defender Helicopter", is included for setup and usage example.
 
  MD-500 Defender Helicopter
 --------------------------
