@@ -24,46 +24,73 @@ namespace BasicHelicopterController
     // public class HelicopterController
     public class HelicopterController : MonoBehaviour 
     {
+        // Header Inputs
+        [Header("Inputs")]
+        
+            [Tooltip("Roll Movement Input")]
+            // private string _rollInput
+            [SerializeField] private string _rollInput = "Roll";
 
-        // Rigidbody
-        [Header("Rigid")]
+            [Tooltip("Pitch Movement Input")]
+            // private string _pitchInput
+            [SerializeField] private string _pitchInput = "Pitch";
 
+            [Tooltip("Yaw Movement Input")]
+            // private string _yawInput
+            [SerializeField] private string _yawInput = "Yaw";
+
+            [Tooltip("Minimum Throttle Input Key")]
+            // private KeyCode _minThrottleKey
+            [SerializeField] private KeyCode _minThrottleKey = KeyCode.LeftShift;
+
+            [Tooltip("Maximum Throttle Input Key")]
+            // private KeyCode _maxThrottleKey
+            [SerializeField] private KeyCode _maxThrottleKey = KeyCode.LeftControl;        
+
+        // Components
+        [Header("Components")]
+
+            [Tooltip("The Rigidbody Component")]
             // Rigidbody _rigidbody
     	    [SerializeField] private Rigidbody _rigidbody;
 
-        // Mesh Collider
-        [Header("Collider")]
-
+            [Tooltip("The Mesh Collider Component")]
             // MeshCollider _meshCollider
     	    [SerializeField] private MeshCollider _meshCollider;
 
         // Audio
         [Header("Audio")]
 
+            [Tooltip("The Audio Source")]
             // AudioSource _audioSource
             [SerializeField] private AudioSource _audioSource;
 
+            [Tooltip("The Rotor Sound Audio Clip")]
             // AudioClip _rotorSound
             [SerializeField] private AudioClip _rotorSound;
-        
+
+            [Tooltip("Rotor Check Bool")]        
             // Bool _rotorCheck
             private bool _rotorCheck = false;
 
          // Amounts
         [Header("Amounts")]
 
+            [Tooltip("The Sensitivity Amount")]
             // _sensitivity
             [SerializeField] private float _sensitivity = 500f;
 
+            [Tooltip("The Throttle Amount")]
             // _throttleAmount
             [SerializeField] private float _throttleAmount = 25f;
 
+            [Tooltip("The Max Thrust Amount")]
             // _maxThrust
             [SerializeField] private float _maxThrust = 5f;
 
             // _throttle  
             private float _throttle;
-        
+       
             // _roll
             private float _roll;
 
@@ -72,16 +99,19 @@ namespace BasicHelicopterController
 
             // _yaw
             private float _yaw;
-        
+
+            [Tooltip("The Rotor Speed Modifier")]        
             // _rotorSpeedModifier
             [SerializeField] private float _rotorSpeedModifier = 10f;
 
         // Transforms
-        [Header("Transforms")]    
+        [Header("Transforms")] 
 
+            [Tooltip("The Top Rotor Transform")]
             // _rotorsTransformTop   
             [SerializeField] private Transform _rotorsTransformTop;
 
+            [Tooltip("The Tail Rotor Transform")]
             // _rotorsTransformTail
             [SerializeField] private Transform _rotorsTransformTail;
 
@@ -162,25 +192,25 @@ namespace BasicHelicopterController
         private void HandleInputs()
         {
             // _roll
-            _roll = Input.GetAxis("Roll");
+            _roll = Input.GetAxis(_rollInput);
 
             // _pitch
-            _pitch = Input.GetAxis("Pitch"); 
+            _pitch = Input.GetAxis(_pitchInput); 
 
             // _yaw
-            _yaw = Input.GetAxis("Yaw");
+            _yaw = Input.GetAxis(_yawInput);
 
             // _rotorCheck false
             _rotorCheck = false;
             
             // if Input GetKey LeftControl
-            if (Input.GetKey(KeyCode.LeftControl))
+            if (Input.GetKey(_maxThrottleKey))
             {
                 // _throttle
                 _throttle += Time.deltaTime * _throttleAmount;
                 
                 // if Input GetKeyDown LeftControl
-                if (Input.GetKeyDown(KeyCode.LeftControl))
+                if (Input.GetKeyDown(_maxThrottleKey))
                 {
                     // _rotorCheck true
                     _rotorCheck = true;
@@ -190,13 +220,13 @@ namespace BasicHelicopterController
             } // close if Input GetKey LeftControl
             
             // else if Input GetKey LeftShift
-            else if (Input.GetKey(KeyCode.LeftShift))
+            else if (Input.GetKey(_minThrottleKey))
             {
                 // _throttle
                 _throttle -= Time.deltaTime * _throttleAmount;
                 
                 // if Input GetKeyDown LeftShift
-                if (Input.GetKeyDown(KeyCode.LeftShift))
+                if (Input.GetKeyDown(_minThrottleKey))
                 {
                     // _rotorCheck true
                     _rotorCheck = true;

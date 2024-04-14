@@ -13,14 +13,24 @@
 // Using
 using UnityEngine;
 
-// namespace CursorLockState
-namespace CursorLockState
+// namespace BasicHelicopterController
+namespace BasicHelicopterController
 {
-    // public class CursorLock
+    // public class HelicopterController
     public class CursorLock : MonoBehaviour 
     {
-        // private bool CursorLockEnabled is true
-        [SerializeField] private bool CursorLockEnabled = true;
+        // Header DetailOn / OFF
+        [Header("On / Off")]
+
+            // private bool CursorLockEnabled
+            [SerializeField] private bool CursorLockEnabled = true;
+        
+        // Header Inputs
+        [Header("Inputs")]
+
+            [Tooltip("The 'escape' Input String")]
+            // private string _escapeInput
+            [SerializeField] private string _escapeInputString = "escape";
 
         // Start is called before the first frame update
         // private void Start
@@ -101,13 +111,13 @@ namespace CursorLockState
             //  if CursorLockEnabled is true
             if (CursorLockEnabled == true)
             {            
-                // Update Cursor State by escape
+                // Update Cursor State by _escapeInputString
 
-                // if Input GetKeyDown escape
-                if (Input.GetKeyDown("escape")) 
+                // if Input GetKeyDown _escapeInputString
+                if (Input.GetKeyDown(_escapeInputString)) 
                 { 
-                    // if Input GetKeyDown escape and Cursor lockState is CursorLockMode Locked
-                    if (Input.GetKeyDown("escape") && Cursor.lockState == CursorLockMode.Locked) 
+                    // if Input GetKeyDown _escapeInputString and Cursor lockState is CursorLockMode Locked
+                    if (Input.GetKeyDown(_escapeInputString) && Cursor.lockState == CursorLockMode.Locked) 
                     {
                         // Cursor lockState CursorLockMode None
                         Cursor.lockState = CursorLockMode.None;
@@ -115,10 +125,10 @@ namespace CursorLockState
                         // Cursor visible is true
                         Cursor.visible = true; 
 
-                    } // close if Input GetKeyDown escape and Cursor lockState is CursorLockMode Locked
+                    } // close if Input GetKeyDown _escapeInputString and Cursor lockState is CursorLockMode Locked
                     
-                    // if Input GetKeyDown escape and Cursor lockState is CursorLockMode None
-                    if (Input.GetKeyDown("escape") && Cursor.lockState == CursorLockMode.None) 
+                    // if Input GetKeyDown _escapeInputString and Cursor lockState is CursorLockMode None
+                    if (Input.GetKeyDown(_escapeInputString) && Cursor.lockState == CursorLockMode.None) 
                     {
                         // Cursor lockState CursorLockMode Locked
                         Cursor.lockState = CursorLockMode.Locked;
@@ -126,7 +136,7 @@ namespace CursorLockState
                         // Cursor visible is false
                         Cursor.visible = false; 
                         
-                    } // close if Input GetKeyDown escape and Cursor lockState is CursorLockMode None            
+                    } // close if Input GetKeyDown _escapeInputString and Cursor lockState is CursorLockMode None            
 
                 } // close if Input GetKeyDown escape
 
@@ -147,4 +157,4 @@ namespace CursorLockState
 
     } // close public class CursorLock
 
-} // close namespace CursorLockState
+} // close namespace BasicHelicopterController
