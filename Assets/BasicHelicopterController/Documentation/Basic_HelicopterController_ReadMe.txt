@@ -263,13 +263,6 @@ On the "MD-500 object"...
 
 Add Component: HelicopterController (BasicHelicopterController)
 
-
-Further Note: If using Unity 2021 LTS, 2021 does not have automaticCenterOfMass 
-thus to curb error that will display you would need to comment out respectively 
-like so.
-
-  //_rigidbody.automaticCenterOfMass = false;
-
 -----------------------------------------------------------------------------------
 
 Step 11: Modify Settings for: "HelicopterController (Script)" 
