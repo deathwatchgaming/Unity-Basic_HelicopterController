@@ -27,15 +27,15 @@ namespace BasicHelicopterController
         // Header Inputs
         [Header("Inputs")]
         
-            [Tooltip("Roll Movement Input")]
+            [Tooltip("Roll Movement Input String")]
             // private string _rollInput
             [SerializeField] private string _rollInput = "Roll";
 
-            [Tooltip("Pitch Movement Input")]
+            [Tooltip("Pitch Movement Input String")]
             // private string _pitchInput
             [SerializeField] private string _pitchInput = "Pitch";
 
-            [Tooltip("Yaw Movement Input")]
+            [Tooltip("Yaw Movement Input String")]
             // private string _yawInput
             [SerializeField] private string _yawInput = "Yaw";
 
@@ -57,6 +57,17 @@ namespace BasicHelicopterController
             [Tooltip("The Mesh Collider Component")]
             // MeshCollider _meshCollider
     	    [SerializeField] private MeshCollider _meshCollider;
+
+        // Rigidbody Adjustments
+        [Header("Rb Adjustments")]
+
+            [Tooltip("The Rigidbody Mass")] 
+            // _centerOfMassOffset
+            [SerializeField] private float _rigidbodyMass = 360f;
+
+            [Tooltip("The Center of Mass Offset")] 
+            // _centerOfMassOffset
+            [SerializeField] private Vector3 _centerOfMassOffset = new Vector3(0.0f, 0.7f, 1.0f);
 
         // Audio
         [Header("Audio")]
@@ -123,15 +134,11 @@ namespace BasicHelicopterController
        	    _rigidbody = GetComponent<Rigidbody>();
 
             // _rigidbody mass
-            _rigidbody.mass = 360f;
+            _rigidbody.mass = _rigidbodyMass;
 
-            // Note: If using Unity 2021 LTS
-            // 2021 does not have automaticCenterOfMass thus to curb error you would need to comment out
-            // _rigidbody automaticCenterOfMass bool false
-            _rigidbody.automaticCenterOfMass = false;
-            
-            // _rigidbody centerOfMass x: 0 y: 0.7 z: 1
-            _rigidbody.centerOfMass = new Vector3(0.0f, 0.7f, 1.0f);
+            // Adjust the rigibody center of mass on X,Y,Z to help prevent the helicopter from tipping over
+            // _rigidbody centerOfMass
+            _rigidbody.centerOfMass = _centerOfMassOffset; 
 
             // _meshCollider GetComponent MeshCollider
        	    _meshCollider = GetComponent<MeshCollider>();

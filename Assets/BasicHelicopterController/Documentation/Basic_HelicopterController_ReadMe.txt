@@ -283,21 +283,32 @@ instead. So, in saying such, your settings should simply look like such:
 
 Script: HelicopterController
 
-Rigid:
-------
+Inputs:
+-------
+
+Roll Input: Roll
+Pitch Input: Pitch
+Yaw Input: Yaw
+Min Throttle Key: Left Shift
+Max Throttle Key: Left Control
+
+Components:
+-----------
 
 Rigidbody: MD-500 (Rigidbody)
-
-Collider:
----------
-
 Mesh Collider: MD-500 (Mesh Collider)
+
+Rb Adjustments:
+---------------
+
+Rigibody Mass: 360
+Ceneter Of Mass Offset: X: 0 Y: 0.7 Z: 1
 
 Audio:
 ------
 
 Audio Source: MD-500 (Audio Source)
-Rotor Sound: Helicopeter_Rotor
+Rotor Sound: Helicopter_Rotor
 
 Amounts:
 --------
@@ -325,19 +336,6 @@ on Awake() as intended hmm, let us just for good measure set such up in inspecto
 instead. So, in saying such, your specific settings should simply look like such:
 
 Mass: 360
-
-Automatic Center Of Mass: False (Bool unchecked) *
-
-Center Of Mass: x: 0 y: 0.7 z: 1 *
-
-* Further Note: If using Unity 2021 LTS, 2021 does not have automaticCenterOfMass 
-thus since you commented out previously in the script:
- 
-//_rigidbody.automaticCenterOfMass = false;
-
-You do not need to uncheck "Automatic Center Of Mass Bool" as such is not present.
-Also you will not need to modify "Center Of Mass" as such is not needed in 2021 &  
-the local will be auto modified via script.
 
 -----------------------------------------------------------------------------------
 
