@@ -295,7 +295,7 @@ Rb Adjustments:
 ---------------
 
 Rigibody Mass: 360
-Ceneter Of Mass Offset: X: 0 Y: 0.7 Z: 1
+Center Of Mass Offset: X: 0 Y: 0.7 Z: 1
 
 Audio:
 ------
