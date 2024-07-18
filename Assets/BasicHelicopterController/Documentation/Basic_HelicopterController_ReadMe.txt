@@ -17,6 +17,8 @@ Yaw:  Q & E
 Decrease throttle: Left Shift
 Increase throttle: Left Control
 
+Change Cameras: V (ie: Rear Camera & Cockpit Camera)
+
 
 Manual Setup Instruction:
 -------------------------
@@ -344,6 +346,34 @@ on Awake() as intended hmm, let us just for good measure set such up in inspecto
 instead. So, in saying such, your specific setting should simply look like such:
 
 Convex: True (Bool checked)
+
+-----------------------------------------------------------------------------------
+
+Step 14: Add Script: "CameraSwitcher.cs" to model "MD-500" object
+
+-----------------------------------------------------------------------------------
+
+On the "MD-500 object"...
+
+Add Component: CameraSwitcher (Script)
+
+Then re-enable the previously disabled camera named: "Cockpit Camera"
+
+-----------------------------------------------------------------------------------
+
+Step 15: Modify Settings for: "Camera Switcher (Script)" 
+
+-----------------------------------------------------------------------------------
+
+Cameras: 2
+
+Element 0: Rear Camera
+Element 1: Cockpit Camera
+
+Input:
+------
+
+Camera Switch Key: V
 
 -----------------------------------------------------------------------------------
 
