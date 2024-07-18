@@ -63,79 +63,80 @@ namespace BasicHelicopterController
         [Header("Rb Adjustments")]
 
             [Tooltip("The Rigidbody Mass")] 
-            // _centerOfMassOffset
+            // private float _centerOfMassOffset
             [SerializeField] private float _rigidbodyMass = 360f;
 
             [Tooltip("The Center of Mass Offset")] 
-            // _centerOfMassOffset
+            // private Vector3 _centerOfMassOffset
             [SerializeField] private Vector3 _centerOfMassOffset = new Vector3(0.0f, 0.7f, 1.0f);
 
         // Audio
         [Header("Audio")]
 
             [Tooltip("The Audio Source")]
-            // AudioSource _audioSource
+            // private AudioSource _audioSource
             [SerializeField] private AudioSource _audioSource;
 
             [Tooltip("The Rotor Sound Audio Clip")]
-            // AudioClip _rotorSound
+            // private AudioClip _rotorSound
             [SerializeField] private AudioClip _rotorSound;
 
             [Tooltip("Rotor Check Bool")]        
-            // Bool _rotorCheck
+            // private Bool _rotorCheck
             private bool _rotorCheck = false;
 
          // Amounts
         [Header("Amounts")]
 
             [Tooltip("The Sensitivity Amount")]
-            // _sensitivity
+            // private float _sensitivity
             [SerializeField] private float _sensitivity = 500f;
 
             [Tooltip("The Throttle Amount")]
-            // _throttleAmount
+            // private float _throttleAmount
             [SerializeField] private float _throttleAmount = 25f;
 
             [Tooltip("The Max Thrust Amount")]
-            // _maxThrust
+            // private float _maxThrust
             [SerializeField] private float _maxThrust = 5f;
 
-            // _throttle  
+            // private float _throttle  
             private float _throttle;
        
-            // _roll
+            // private float _roll
             private float _roll;
 
-            // _pitch
+            // private float _pitch
             private float _pitch;
 
-            // _yaw
+            // private float _yaw
             private float _yaw;
 
             [Tooltip("The Rotor Speed Modifier")]        
-            // _rotorSpeedModifier
+            // private float _rotorSpeedModifier
             [SerializeField] private float _rotorSpeedModifier = 10f;
 
         // Transforms
         [Header("Transforms")] 
 
             [Tooltip("The Top Rotor Transform")]
-            // _rotorsTransformTop   
+            // private Transform _rotorsTransformTop   
             [SerializeField] private Transform _rotorsTransformTop;
 
             [Tooltip("The Tail Rotor Transform")]
-            // _rotorsTransformTail
+            // private Transform _rotorsTransformTail
             [SerializeField] private Transform _rotorsTransformTail;
 
         // HUD
         [Header("HUD")]
 
             [Tooltip("The interface TextMeshPro HUD")]
-            // _hud
+            // private TextMeshProUGUI _heliHUD
             [SerializeField] private TextMeshProUGUI _heliHUD;
 
         // Awake is called even if the script is disabled
-        // Awake
+            
+        // private void Awake
         private void Awake()
         {
             // _rigidbody GetComponent Rigidbody
@@ -160,6 +161,7 @@ namespace BasicHelicopterController
         } // close private void Awake
         
         // Update is called every frame
+
         // private void Update
         private void Update()
         {
@@ -189,6 +191,7 @@ namespace BasicHelicopterController
         } // close private void Update
 
         // FixedUpdate is called every physics step
+
         // private void FixedUpdate
         private void FixedUpdate()
         {
