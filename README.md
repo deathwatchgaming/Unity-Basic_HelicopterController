@@ -14,6 +14,8 @@ Controls:
 * Decrease throttle: Left Shift
 * Increase throttle: Left Control
 
+* Change Cameras: V (ie: Rear Camera & Cockpit Camera)
+
 Manual Setup Instruction:
 -------------------------
 
