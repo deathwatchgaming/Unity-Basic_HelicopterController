@@ -7,6 +7,7 @@
 
 // Using
 using UnityEngine;
+using TMPro;
 
 // namespace BasicHelicopterController
 namespace BasicHelicopterController
@@ -52,11 +53,11 @@ namespace BasicHelicopterController
 
             [Tooltip("The Rigidbody Component")]
             // Rigidbody _rigidbody
-    	    [SerializeField] private Rigidbody _rigidbody;
+            [SerializeField] private Rigidbody _rigidbody;
 
             [Tooltip("The Mesh Collider Component")]
             // MeshCollider _meshCollider
-    	    [SerializeField] private MeshCollider _meshCollider;
+            [SerializeField] private MeshCollider _meshCollider;
 
         // Rigidbody Adjustments
         [Header("Rb Adjustments")]
@@ -126,12 +127,19 @@ namespace BasicHelicopterController
             // _rotorsTransformTail
             [SerializeField] private Transform _rotorsTransformTail;
 
+        // HUD
+        [Header("HUD")]
+
+            [Tooltip("The interface TextMeshPro HUD")]
+            // _hud
+            [SerializeField] private TextMeshProUGUI _heliHUD;
+
         // Awake is called even if the script is disabled
         // Awake
         private void Awake()
         {
             // _rigidbody GetComponent Rigidbody
-       	    _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody = GetComponent<Rigidbody>();
 
             // _rigidbody mass
             _rigidbody.mass = _rigidbodyMass;
@@ -141,7 +149,7 @@ namespace BasicHelicopterController
             _rigidbody.centerOfMass = _centerOfMassOffset; 
 
             // _meshCollider GetComponent MeshCollider
-       	    _meshCollider = GetComponent<MeshCollider>();
+            _meshCollider = GetComponent<MeshCollider>();
 
             // _meshCollider convex
             _meshCollider.convex = true;
@@ -157,6 +165,9 @@ namespace BasicHelicopterController
         {
             // HandleInputs
             HandleInputs();
+
+            // UpdateHUD
+            UpdateHUD();
             
             // _rotorsTransformTop
             _rotorsTransformTop.Rotate(Vector3.up * (_maxThrust * _throttle) * _rotorSpeedModifier);
@@ -246,6 +257,20 @@ namespace BasicHelicopterController
             _throttle = Mathf.Clamp(_throttle, 0f, 100f);
 
         } // close private void HandleInputs
+
+        // private void UpdateHUD
+        private void UpdateHUD()
+        {
+            // _hud.text
+            _heliHUD.text = "Throttle: " + _throttle.ToString("F0") + " %\n";
+
+            // _hud.text
+            _heliHUD.text += "Airspeed: " + (_rigidbody.velocity.magnitude * 3.6f).ToString("F0") + " km/h\n";
+
+            // _hud.text
+            _heliHUD.text += "Altitude: " + transform.position.y.ToString("F0") + " m";
+
+        } // close private void UpdateHUD           
 
         // private void PlayRotorSound
         private void PlayRotorSound()
