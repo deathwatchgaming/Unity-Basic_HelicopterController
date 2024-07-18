@@ -347,9 +347,54 @@ instead. So, in saying such, your specific setting should simply look like such:
 
 Convex: True (Bool checked)
 
+
 -----------------------------------------------------------------------------------
 
-Step 14: Add Script: "CameraSwitcher.cs" to model "MD-500" object
+Step 14: Outside of HelicopterController: Create Empty Game Object: "Interface"
+
+-----------------------------------------------------------------------------------
+
+Position: X: 0    Y: 0    Z: 0 
+Rotation: X: 0    Y: 0    Z: 0 
+Scale:    X: 1    Y: 1    Z: 1
+
+Layer: UI
+
+Next: In "Interface": add as child: "Canvas"
+
+Layer: UI
+
+-----------------------------------------------------------------------------------
+
+Step 15: In "Canvas": add as child: (UI > Text-TexMeshPro) called: "HelicopterHUD"
+
+-----------------------------------------------------------------------------------
+
+Layer: UI
+
+Rect Transform:
+---------------
+
+Pos X: 160
+Pos Y: 60
+
+Width: 300
+Height: 300
+
+Text Input:
+-----------
+
+Throttle: 0 %
+AirSpeed: 0 kmh
+Altitude: 0 m
+
+Text Size: 25
+
+Alignment: Left & Middle
+
+-----------------------------------------------------------------------------------
+
+Step 16: Exit "Interface" & Add Script: "CameraSwitcher.cs" to "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -361,7 +406,7 @@ Then re-enable the previously disabled camera named: "Cockpit Camera"
 
 -----------------------------------------------------------------------------------
 
-Step 15: Modify Settings for: "Camera Switcher (Script)" 
+Step 17: Modify Settings for: "Camera Switcher (Script)" 
 
 -----------------------------------------------------------------------------------
 
