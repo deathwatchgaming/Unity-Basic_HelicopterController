@@ -25,16 +25,20 @@ Manual Setup Instruction:
 
 * Simply follow the instruction for manual setup found below.
 
+
 -----------------------------------------------------------------------------------
+
 
 Note: if you already have some sort of a test terrain in place, well then, you
 can simple skip the steps: #1, 2 & 3 and go directly to #4.
+
 
 -----------------------------------------------------------------------------------
 
 Step 1: Create: "Environment" * Added for Nicer Organization
 
 -----------------------------------------------------------------------------------
+
 
 Create Empty: "Environment"
 
@@ -53,13 +57,15 @@ ahead & drag the "Directional Light" into "Environment".
 Also: We don't need the "Main Camera" in Sample Scene, so..., we can go ahead
 and delete it.
 
+
 -----------------------------------------------------------------------------------
 
 Step 2: Create: "Terrain Plane"
 
 -----------------------------------------------------------------------------------
 
-Note: Since we are creating a basic Helicopter Cointroller we need more ground to 
+
+Note: Since we are creating a basic Helicopter Controller we need more ground to 
 fly over so let us make the test "Terrain Plane" a bit big, ie: 2500 x 2500.
 
 Create New 3D Object: "Plane"
@@ -74,11 +80,13 @@ We can now opt to clean up for better organization, simply drag the:
 "Terrain Plane" into the holder "Environment" we added for just this exact
  purpose!
 
+
 -----------------------------------------------------------------------------------
 
 Step 3: Create: "Terrain"
 
 -----------------------------------------------------------------------------------
+
 
 Note: Since we are creating a basic Helicopter Cointroller we need more gorund to 
 fly over so let us make the test "Terrain" a bit big, ie: 8000 x 8000.
@@ -101,11 +109,13 @@ Scale:    X: 1     Y: 1 Z: 1
 We can now opt to clean up for better organization, simply drag the:
 "Terrain" into the holder "Environment" we added for just this exact purpose!
 
+
 -----------------------------------------------------------------------------------
 
 Step 4: Create: "HelicopterController"
 
 -----------------------------------------------------------------------------------
+
 
 Create Empty Game Object: "HelicopterController" *
 
@@ -116,11 +126,13 @@ Scale:    X: 1 Y: 1 Z: 1
 * Note: We will use such as a "holder" for our helicopter model simply for better
   organizational purposes.  
 
+
 -----------------------------------------------------------------------------------
 
 Step 5: Add Input: "Roll"
 
 -----------------------------------------------------------------------------------
+
 
 In Edit -> Project Settings -> Input Manager:
 
@@ -144,11 +156,13 @@ Note: this is using the old input system and while yes, you could modify the scr
 for new input system usage, currently that is not covered in the scope of this 
 setup at this time.
 
+
 -----------------------------------------------------------------------------------
 
 Step 6: Add Input: "Pitch"
 
 -----------------------------------------------------------------------------------
+
 
 In Edit -> Project Settings -> Input Manager:
 
@@ -172,11 +186,13 @@ Note: this is using the old input system and while yes, you could modify the scr
 for new input system usage, currently that is not covered in the scope of this 
 setup at this time.
 
+
 -----------------------------------------------------------------------------------
 
 Step 7: Add Input: "Yaw"
 
 -----------------------------------------------------------------------------------
+
 
 In Edit -> Project Settings -> Input Manager:
 
@@ -198,11 +214,13 @@ Note: this is using the old input system and while yes, you could modify the scr
 for new input system usage, currently that is not covered in the scope of this 
 setup at this time.
 
+
 -----------------------------------------------------------------------------------
 
 Step 8: Add Model: "MD-500"
 
 -----------------------------------------------------------------------------------
+
 
 Visit in "BasicHelicopterController/Models/md-500-defender-helicopter"...
 the model MD-500.fbx -> MD-500 Import Settings -> Materials -> Textures 
@@ -228,11 +246,13 @@ Scale:    X: 0.01 Y: 0.01 Z: 0.01
 
 Lastly, place the "MD-500 object" inside the "holder": HelicopterController
 
+
 -----------------------------------------------------------------------------------
 
 Step 9: Add: "Camera" to model "MD-500" object
 
 -----------------------------------------------------------------------------------
+
 
 As a child of "MD-500" object...
 
@@ -249,7 +269,7 @@ diff views.
 
 Secondly, add a camera named: "Rear Camera" *
 
-* Keep this camera Active as this is the camera we will use.
+* Keep this camera Active as this is the camera we will use (for now).
 
 Position: X: 0 Y: 350 Z: -1350 
 Rotation: X: 0 Y: 0   Z: 0 
@@ -258,21 +278,25 @@ Scale:    X: 1 Y: 1   Z: 1
 Note: you will notice the numbers are larger that what you would expect and that 
 is because the model is scaled at 0.01, thus this must be factored.
 
+
 -----------------------------------------------------------------------------------
 
 Step 10: Add Script: "HelicopterController.cs" to model "MD-500" object
 
 -----------------------------------------------------------------------------------
 
+
 On the "MD-500 object"...
 
 Add Component: HelicopterController (BasicHelicopterController)
+
 
 -----------------------------------------------------------------------------------
 
 Step 11: Modify Settings for: "HelicopterController (Script)" 
 
 -----------------------------------------------------------------------------------
+
 
 Note: While the script will work fine and fill most of these settings by itself on 
 Awake() as intended say as long as you say set the bare minimum for example rotor 
@@ -323,11 +347,13 @@ Transforms:
 Rotors Transform Top: Top_rotor (Transform)
 Rotors Transform Tail: Tail_Rotor (Transform)
 
+
 -----------------------------------------------------------------------------------
 
 Step 12: Modify Settings for: "Rigidbody (Component)" 
 
 -----------------------------------------------------------------------------------
+
 
 Note: While the script will work fine and fill these particular settings by itself 
 on Awake() as intended hmm, let us just for good measure set such up in inspector 
@@ -335,11 +361,13 @@ instead. So, in saying such, your specific settings should simply look like such
 
 Mass: 360
 
+
 -----------------------------------------------------------------------------------
 
 Step 13: Modify Settings for: "Mesh Collider (Component)" 
 
 -----------------------------------------------------------------------------------
+
 
 Note: While the script will work fine and fill this particular setting by itself 
 on Awake() as intended hmm, let us just for good measure set such up in inspector 
@@ -354,9 +382,10 @@ Step 14: Outside of HelicopterController: Create Empty Game Object: "Interface"
 
 -----------------------------------------------------------------------------------
 
-Position: X: 0    Y: 0    Z: 0 
-Rotation: X: 0    Y: 0    Z: 0 
-Scale:    X: 1    Y: 1    Z: 1
+
+Position: X: 0 Y: 0 Z: 0 
+Rotation: X: 0 Y: 0 Z: 0 
+Scale:    X: 1 Y: 1 Z: 1
 
 Layer: UI
 
@@ -364,11 +393,13 @@ Next: In "Interface": add as child: "Canvas"
 
 Layer: UI
 
+
 -----------------------------------------------------------------------------------
 
 Step 15: In "Canvas": add as child: (UI > Text-TexMeshPro) called: "HelicopterHUD"
 
 -----------------------------------------------------------------------------------
+
 
 Layer: UI
 
@@ -392,11 +423,13 @@ Text Size: 25
 
 Alignment: Left & Middle
 
+
 -----------------------------------------------------------------------------------
 
 Step 16: Exit "Interface" & Add Script: "CameraSwitcher.cs" to "MD-500" object
 
 -----------------------------------------------------------------------------------
+
 
 On the "MD-500 object"...
 
@@ -404,11 +437,13 @@ Add Component: CameraSwitcher (Script)
 
 Then re-enable the previously disabled camera named: "Cockpit Camera"
 
+
 -----------------------------------------------------------------------------------
 
 Step 17: Modify Settings for: "Camera Switcher (Script)" 
 
 -----------------------------------------------------------------------------------
+
 
 Cameras: 2
 
@@ -420,11 +455,13 @@ Input:
 
 Camera Switch Key: V
 
+
 -----------------------------------------------------------------------------------
 
 Optional: Cursor Lock
 
 -----------------------------------------------------------------------------------
+
 
 If you would like Cursor Lock, please note that such was recently removed from 
 the HelicopterController script as such made sense to remove such and add an 
@@ -433,7 +470,9 @@ optional CursorLock.cs script if needed.
 If such so is desired, well, you can simply attach the CursorLock.cs script to 
 the player / controller.
 
+
 -----------------------------------------------------------------------------------
+
 
 That is it and concludes the basic Helicopter Controller manual setup steps. You 
 can now begin to modify such further for your specific needs.
