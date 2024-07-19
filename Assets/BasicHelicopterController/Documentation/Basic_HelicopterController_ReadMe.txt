@@ -66,7 +66,7 @@ Step 2: Create: "Terrain Plane"
 
 
 Note: Since we are creating a basic Helicopter Controller we need more ground to 
-fly over so let us make the test "Terrain Plane" a bit big, ie: 2500 x 2500.
+fly over so let us make the test "Terrain Plane" a bit big, ie: 8000 x 8000.
 
 Create New 3D Object: "Plane"
 
