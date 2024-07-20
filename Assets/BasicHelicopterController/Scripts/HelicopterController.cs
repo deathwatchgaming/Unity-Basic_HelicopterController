@@ -171,9 +171,22 @@ namespace BasicHelicopterController
             
             // _rotorsTransformTop
             _rotorsTransformTop.Rotate(Vector3.up * (_maxThrust * _throttle) * _rotorSpeedModifier);
-           
-            // _rotorsTransformTail
-            _rotorsTransformTail.Rotate(Vector3.left * _throttle * _rotorSpeedModifier);
+
+            // if Input GetAxis _heliYawInput is less than 0
+            if (Input.GetAxis(_heliYawInput) < 0)
+            {
+                // _rotorsTransformTail
+                _rotorsTransformTail.Rotate(Vector3.left * (_maxThrust * _throttle) * _rotorSpeedModifier);
+
+            } // close if Input GetAxis _heliYawInput is less than 0
+
+            // else if Input GetAxis _heliYawInput is greater than 0
+            else if (Input.GetAxis(_heliYawInput) > 0)
+            {
+                // _rotorsTransformTail
+                _rotorsTransformTail.Rotate(Vector3.right * (_maxThrust * _throttle) * _rotorSpeedModifier);
+
+            } // close else if Input GetAxis _heliYawInput is greater than 0
             
             // _audioSource volume
             _audioSource.volume = (_throttle * 0.01f);  
