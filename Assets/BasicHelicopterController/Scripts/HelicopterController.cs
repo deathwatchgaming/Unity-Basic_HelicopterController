@@ -12,7 +12,6 @@ using TMPro;
 // namespace BasicHelicopterController
 namespace BasicHelicopterController
 {
-
     // RequireComponent Rigidbody
     [RequireComponent(typeof(Rigidbody))]
 
@@ -28,17 +27,17 @@ namespace BasicHelicopterController
         // Header Inputs
         [Header("Inputs")]
         
-            [Tooltip("Roll Movement Input String")]
-            // private string _rollInput
-            [SerializeField] private string _rollInput = "Roll";
+            [Tooltip("Heli Roll Movement Input String")]
+            // private string _heliRollInput
+            [SerializeField] private string _heliRollInput = "Heli Roll";
 
-            [Tooltip("Pitch Movement Input String")]
-            // private string _pitchInput
-            [SerializeField] private string _pitchInput = "Pitch";
+            [Tooltip("Heli Pitch Movement Input String")]
+            // private string _heliPitchInput
+            [SerializeField] private string _heliPitchInput = "Heli Pitch";
 
-            [Tooltip("Yaw Movement Input String")]
-            // private string _yawInput
-            [SerializeField] private string _yawInput = "Yaw";
+            [Tooltip("Heli Yaw Movement Input String")]
+            // private string _heliYawInput
+            [SerializeField] private string _heliYawInput = "Heli Yaw";
 
             [Tooltip("Minimum Throttle Input Key")]
             // private KeyCode _minThrottleKey
@@ -80,8 +79,7 @@ namespace BasicHelicopterController
             [Tooltip("The Rotor Sound Audio Clip")]
             // private AudioClip _rotorSound
             [SerializeField] private AudioClip _rotorSound;
-
-            [Tooltip("Rotor Check Bool")]        
+        
             // private Bool _rotorCheck
             private bool _rotorCheck = false;
 
@@ -103,14 +101,14 @@ namespace BasicHelicopterController
             // private float _throttle  
             private float _throttle;
        
-            // private float _roll
-            private float _roll;
+            // private float _heliRoll
+            private float _heliRoll;
 
-            // private float _pitch
-            private float _pitch;
+            // private float _heliPitch
+            private float _heliPitch;
 
-            // private float _yaw
-            private float _yaw;
+            // private float _heliYaw
+            private float _heliYaw;
 
             [Tooltip("The Rotor Speed Modifier")]        
             // private float _rotorSpeedModifier
@@ -199,27 +197,27 @@ namespace BasicHelicopterController
             _rigidbody.AddForce(transform.up * _throttle, ForceMode.Impulse);
             
             // _rigidbody AddTorque
-            _rigidbody.AddTorque(transform.right * _pitch * _sensitivity);
+            _rigidbody.AddTorque(transform.right * _heliPitch * _sensitivity);
 
             // _rigidbody AddTorque
-            _rigidbody.AddTorque(-transform.forward * _roll * _sensitivity);
+            _rigidbody.AddTorque(-transform.forward * _heliRoll * _sensitivity);
 
             // _rigidbody AddTorque
-            _rigidbody.AddTorque(transform.up * _yaw * _sensitivity); 
+            _rigidbody.AddTorque(transform.up * _heliYaw * _sensitivity); 
 
         } // close private void FixedUpdate    
         
         // private void HandleInputs
         private void HandleInputs()
         {
-            // _roll
-            _roll = Input.GetAxis(_rollInput);
+            // _heliRoll
+            _heliRoll = Input.GetAxis(_heliRollInput);
 
-            // _pitch
-            _pitch = Input.GetAxis(_pitchInput); 
+            // _heliPitch
+            _heliPitch = Input.GetAxis(_heliPitchInput); 
 
-            // _yaw
-            _yaw = Input.GetAxis(_yawInput);
+            // _heliYaw
+            _heliYaw = Input.GetAxis(_heliYawInput);
 
             // _rotorCheck false
             _rotorCheck = false;
@@ -264,13 +262,13 @@ namespace BasicHelicopterController
         // private void UpdateHUD
         private void UpdateHUD()
         {
-            // _hud.text
+            // _heliHUD.text
             _heliHUD.text = "Throttle: " + _throttle.ToString("F0") + " %\n";
 
-            // _hud.text
+            // _heliHUD.text
             _heliHUD.text += "Airspeed: " + (_rigidbody.velocity.magnitude * 3.6f).ToString("F0") + " km/h\n";
 
-            // _hud.text
+            // _heliHUD.text
             _heliHUD.text += "Altitude: " + transform.position.y.ToString("F0") + " m";
 
         } // close private void UpdateHUD           
