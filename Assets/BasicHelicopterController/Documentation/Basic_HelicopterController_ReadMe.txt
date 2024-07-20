@@ -246,6 +246,34 @@ Scale:    X: 0.01 Y: 0.01 Z: 0.01
 
 Lastly, place the "MD-500 object" inside the "holder": HelicopterController
 
+So, now your heirarchy expanded should look like so:
+
+ie:
+
+Environment
+-- Directional Light
+-- Terrain
+-- Terrain Plane
+HelicopterController
+- MD-500
+-- Cockpit
+-- Glass
+-- Tail_Rotor
+-- Top_rotor
+
+One last thing for good measure is to simply check to make sure there are mesh
+colliders on things if any such are not so for example add to such:
+
+ie:
+
+-- Cockpit
+-- Glass
+-- Tail_Rotor
+-- Top_rotor
+
++ mesh collider 
+convex: true
+
 
 -----------------------------------------------------------------------------------
 
@@ -290,6 +318,25 @@ Rotation: X: 0 Y: 0  Z: 0
 Scale:    X: 1 Y: 1  Z: 1
 
 Next, you can then (drag into / add) both cameras into the "empty": "View"
+
+
+So, now overall your heirarchy expanded should look like so:
+
+ie:
+
+Environment
+-- Directional Light
+-- Terrain
+-- Terrain Plane
+HelicopterController
+- MD-500
+-- Cockpit
+-- Glass
+-- Tail_Rotor
+-- Top_rotor
+-- View
+--- Cockpit Camera
+--- Rear Camera
 
 
 -----------------------------------------------------------------------------------
@@ -435,6 +482,30 @@ Altitude: 0 m
 Text Size: 25
 
 Alignment: Left & Middle
+
+
+
+So, now overall your heirarchy expanded should look like so:
+
+ie:
+
+Environment
+-- Directional Light
+-- Terrain
+-- Terrain Plane
+HelicopterController
+- MD-500
+-- Cockpit
+-- Glass
+-- Tail_Rotor
+-- Top_rotor
+-- View
+--- Cockpit Camera
+--- Rear Camera
+Interface
+- Canvas
+-- HelicopterHUD
+EventSystem
 
 
 -----------------------------------------------------------------------------------
