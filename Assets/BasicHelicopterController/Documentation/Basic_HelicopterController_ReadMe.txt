@@ -129,14 +129,14 @@ Scale:    X: 1 Y: 1 Z: 1
 
 -----------------------------------------------------------------------------------
 
-Step 5: Add Input: "Roll"
+Step 5: Add Input: "Heli Roll"
 
 -----------------------------------------------------------------------------------
 
 
 In Edit -> Project Settings -> Input Manager:
 
-Add Input Axes: "Roll"
+Add Input Axes: "Heli Roll"
 
 Name: Roll
 Negative Button: left
@@ -159,14 +159,14 @@ setup at this time.
 
 -----------------------------------------------------------------------------------
 
-Step 6: Add Input: "Pitch"
+Step 6: Add Input: "Heli Pitch"
 
 -----------------------------------------------------------------------------------
 
 
 In Edit -> Project Settings -> Input Manager:
 
-Add Input Axes: "Pitch"
+Add Input Axes: "Heli Pitch"
 
 Name: Pitch
 Negative Button: down
@@ -189,14 +189,14 @@ setup at this time.
 
 -----------------------------------------------------------------------------------
 
-Step 7: Add Input: "Yaw"
+Step 7: Add Input: "Heli Yaw"
 
 -----------------------------------------------------------------------------------
 
 
 In Edit -> Project Settings -> Input Manager:
 
-Add Input Axes: "Yaw"
+Add Input Axes: "Heli Yaw"
 
 Name: Yaw
 Negative Button: q
@@ -249,7 +249,7 @@ Lastly, place the "MD-500 object" inside the "holder": HelicopterController
 
 -----------------------------------------------------------------------------------
 
-Step 9: Add: "Camera" to model "MD-500" object
+Step 9: Add: "Camera(s)" to model "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -277,6 +277,19 @@ Scale:    X: 1 Y: 1   Z: 1
 
 Note: you will notice the numbers are larger that what you would expect and that 
 is because the model is scaled at 0.01, thus this must be factored.
+
+Now we can opt to move both cameras into an "empty"... *
+
+* Note: We will use such as a "holder" for our cameras simply for better
+  organizational purposes.  
+
+As a child of "MD-500" object... create an "empty" called: "View"
+
+Position: X: 0 Y: 0  Z: 0
+Rotation: X: 0 Y: 0  Z: 0 
+Scale:    X: 1 Y: 1  Z: 1
+
+Next, you can then (drag into / add) both cameras into the "empty": "View"
 
 
 -----------------------------------------------------------------------------------
@@ -308,9 +321,9 @@ Script: HelicopterController
 Inputs:
 -------
 
-Roll Input: Roll
-Pitch Input: Pitch
-Yaw Input: Yaw
+Heli Roll Input: Heli Roll
+Heli Pitch Input: Heli Pitch
+Heli Yaw Input: Heli Yaw
 Min Throttle Key: Left Shift
 Max Throttle Key: Left Control
 
