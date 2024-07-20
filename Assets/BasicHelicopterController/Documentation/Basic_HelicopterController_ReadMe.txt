@@ -217,13 +217,28 @@ setup at this time.
 
 -----------------------------------------------------------------------------------
 
-Step 8: Add Model: "MD-500"
+Step 8: Add Model(s): "Helicopter Land" & "MD-500"
 
 -----------------------------------------------------------------------------------
 
+Visit in "BasicHelicopterController/Models/Helicopter-Land-Helipad/Source"...
+the model Helicopter Land.fbx
 
-Visit in "BasicHelicopterController/Models/md-500-defender-helicopter"...
-the model MD-500.fbx -> MD-500 Import Settings -> Materials -> Textures 
+Drag such into your scene and unpack the prefab so that we can edit it.
+
+Rename to: "HeliPad"
+
+Position: X: 0.1       Y: 1.46       Z: 0.7 
+Rotation: X: -89.98    Y: 0          Z: 0 
+Scale:    X: 424.3228  Y: 424.3228   Z: 424.3228
+
+Add: Mesh Collider
+
+Convex: True
+
+Next, let us visit
+in "BasicHelicopterController/Models/md-500-defender-helicopter"... the model
+MD-500.fbx -> MD-500 Import Settings -> Materials -> Textures 
 
 Click "Extract Textures"
 
@@ -246,6 +261,16 @@ Scale:    X: 0.01 Y: 0.01 Z: 0.01
 
 Lastly, place the "MD-500 object" inside the "holder": HelicopterController
 
+
+Then let us modify the MD-500 object to compensate for the fact that we added
+the helipad and want to have the helicopter on top of such
+
+ie: MD-500
+
+Position: X: 0.0005347086    Y: 0.2104118    Z: -0.0009975433
+Rotation: X: 0               Y: 0            Z: 0 
+Scale:    X: 0.01            Y: 0.01         Z: 0.01
+
 So, now your heirarchy expanded should look like so:
 
 ie:
@@ -260,6 +285,7 @@ HelicopterController
 -- Glass
 -- Tail_Rotor
 -- Top_rotor
+HeliPad
 
 One last thing for good measure is to simply check to make sure there are mesh
 colliders on things if any such are not so for example add to such:
@@ -337,6 +363,7 @@ HelicopterController
 -- View
 --- Cockpit Camera
 --- Rear Camera
+HeliPad
 
 
 -----------------------------------------------------------------------------------
@@ -502,6 +529,7 @@ HelicopterController
 -- View
 --- Cockpit Camera
 --- Rear Camera
+HeliPad
 Interface
 - Canvas
 -- HelicopterHUD
