@@ -387,6 +387,11 @@ namespace BasicHelicopterController
                 // _heliHUD.text Airspeed
                 _heliHUD.text += "Airspeed: " + (_rigidbody.velocity.magnitude * 2.23694f).ToString("F0") + " mph\n";
 
+                // 0.3048 is the constant to convert from m to ft ie: 0.3048 m = 1 ft thus altitude in m divided by 0.3048 gets feet
+
+                // _heliHUD.text Altitude
+                _heliHUD.text += "Altitude: " + (transform.position.y / 0.3048f).ToString("F0") + " ft"; 
+
             } // close if _airspeedType is HelicopterAirspeedType.mph
 
             // else if _airspeedType is HelicopterAirspeedType.kmh
@@ -397,10 +402,12 @@ namespace BasicHelicopterController
                 // _heliHUD.text Airspeed
                 _heliHUD.text += "Airspeed: " + (_rigidbody.velocity.magnitude * 3.6f).ToString("F0") + " kmh\n";
 
-            } // close else if _speedType is HelicopterAirspeedType.kmh
+                // m is default measurement unit hence keep as is since we want to keep m when kmh speed type selected
 
-            // _heliHUD.text
-            _heliHUD.text += "Altitude: " + transform.position.y.ToString("F0") + " m";
+                // _heliHUD.text Altitude
+                _heliHUD.text += "Altitude: " + transform.position.y.ToString("F0") + " m";                
+
+            } // close else if _speedType is HelicopterAirspeedType.kmh
 
         } // close private void UpdateHUD           
 
