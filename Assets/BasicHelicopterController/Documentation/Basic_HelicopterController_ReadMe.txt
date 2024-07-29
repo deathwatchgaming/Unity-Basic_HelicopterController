@@ -522,9 +522,21 @@ Height: 300
 Text Input:
 -----------
 
+* Say if you selected speed type Kmh then such:
+
 Throttle: 0 %
 AirSpeed: 0 kmh
 Altitude: 0 m
+
+* Say if you selected speed type Mph then such:
+
+Throttle: 0 %
+AirSpeed: 0 mph
+Altitude: 0 ft
+
+* Note: that either or of the above can be added as placeholder as such will
+  be overwritten on awake
+
 
 Text Size: 25
 
