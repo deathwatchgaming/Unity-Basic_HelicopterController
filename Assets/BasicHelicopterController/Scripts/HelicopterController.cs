@@ -7,11 +7,20 @@
 
 // Using
 using UnityEngine;
+using System;
 using TMPro;
 
 // namespace BasicHelicopterController
 namespace BasicHelicopterController
 {
+    // public enum HelicopterAirspeedType
+    public enum HelicopterAirspeedType
+    {
+        mph,
+        kmh 
+
+    } // close public enum HelicopterAirspeedType
+
     // RequireComponent Rigidbody
     [RequireComponent(typeof(Rigidbody))]
 
@@ -69,19 +78,16 @@ namespace BasicHelicopterController
             // private Vector3 _centerOfMassOffset
             [SerializeField] private Vector3 _centerOfMassOffset = new Vector3(0.0f, 0.7f, 1.0f);
 
-        // Audio
-        [Header("Audio")]
+        // Transforms
+        [Header("Transforms")] 
 
-            [Tooltip("The Audio Source")]
-            // private AudioSource _audioSource
-            [SerializeField] private AudioSource _audioSource;
+            [Tooltip("The Top Rotor Transform")]
+            // private Transform _rotorsTransformTop   
+            [SerializeField] private Transform _rotorsTransformTop;
 
-            [Tooltip("The Rotor Sound Audio Clip")]
-            // private AudioClip _rotorSound
-            [SerializeField] private AudioClip _rotorSound;
-        
-            // private Bool _rotorCheck
-            private bool _rotorCheck = false;
+            [Tooltip("The Tail Rotor Transform")]
+            // private Transform _rotorsTransformTail
+            [SerializeField] private Transform _rotorsTransformTail;
 
          // Amounts
         [Header("Amounts")]
@@ -114,16 +120,16 @@ namespace BasicHelicopterController
             // private float _rotorSpeedModifier
             [SerializeField] private float _rotorSpeedModifier = 10f;
 
-        // Transforms
-        [Header("Transforms")] 
+        // Airspeed
+        [Header("Airspeed")]
 
-            [Tooltip("The Top Rotor Transform")]
-            // private Transform _rotorsTransformTop   
-            [SerializeField] private Transform _rotorsTransformTop;
-
-            [Tooltip("The Tail Rotor Transform")]
-            // private Transform _rotorsTransformTail
-            [SerializeField] private Transform _rotorsTransformTail;
+            [Tooltip("The Airspeed Measurement Unit")]
+            // HelicopterAirspeedType _airspeedType   
+            [SerializeField] private HelicopterAirspeedType _airspeedType;            
+        
+            [Tooltip("The Maximum Airspeed Amount For Example: Say 152 For MPH Or Say 244 For KMH")]
+            // float _maxAirspeed mph is default (152mph)
+            [SerializeField] private float _maxAirspeed = 152;
 
         // HUD
         [Header("HUD")]
@@ -131,6 +137,20 @@ namespace BasicHelicopterController
             [Tooltip("The interface TextMeshPro HUD")]
             // private TextMeshProUGUI _heliHUD
             [SerializeField] private TextMeshProUGUI _heliHUD;
+
+        // Audio
+        [Header("Audio")]
+
+            [Tooltip("The Audio Source")]
+            // private AudioSource _audioSource
+            [SerializeField] private AudioSource _audioSource;
+
+            [Tooltip("The Rotor Sound Audio Clip")]
+            // private AudioClip _rotorSound
+            [SerializeField] private AudioClip _rotorSound;
+        
+            // private Bool _rotorCheck
+            private bool _rotorCheck = false;
 
         // Awake is called even if the script is disabled
             
@@ -165,6 +185,9 @@ namespace BasicHelicopterController
         {
             // HandleInputs
             HandleInputs();
+
+            // HandleAirspeed
+            HandleAirspeed();
 
             // UpdateHUD
             UpdateHUD();
@@ -304,14 +327,77 @@ namespace BasicHelicopterController
 
         } // close private void HandleInputs
 
+        // private void HandleAirspeed
+        private void HandleAirspeed()
+        {
+            // Take care of airspeed unit type and max airspeed
+
+            // float _airspeed
+            float _airspeed = _rigidbody.velocity.magnitude;
+
+            // _airspeedType equals HelicopterAirspeedType.mph
+            if (_airspeedType == HelicopterAirspeedType.mph)
+            {
+                // 2.23694 is the constant to convert a value from m/s to mph
+
+                // _airspeed
+                _airspeed *= 2.23694f;
+
+                // if _airspeed > _maxAirspeed
+                if (_airspeed > _maxAirspeed)
+                {
+                    // _rigidbody.velocity
+                    _rigidbody.velocity = (_maxAirspeed / 2.23694f) * _rigidbody.velocity.normalized;
+
+                } // close if _airspeed > _maxAirspeed
+                        
+            } // close if _airspeedType equals HelicopterAirspeedType.mph
+
+            // else if _airspeedType equals HelicopterAirspeedType.kmh
+            else if (_airspeedType == HelicopterAirspeedType.kmh)
+            {
+                // 3.6 is the constant to convert a value from m/s to km/h
+                
+                // _airspeed
+                _airspeed *= 3.6f;
+
+                // if _airspeed > _maxAirspeed
+                if (_airspeed > _maxAirspeed)
+                {
+                    // _rigidbody.velocity
+                    _rigidbody.velocity = (_maxAirspeed / 3.6f) * _rigidbody.velocity.normalized;
+
+                } // close if _airspeed > _maxAirspeed
+                       
+            } // close else if _airspeedType equals HelicopterAirspeedType.kmh
+
+        } // close private void HandleAirspeed
+
         // private void UpdateHUD
         private void UpdateHUD()
         {
             // _heliHUD.text
             _heliHUD.text = "Throttle: " + _throttle.ToString("F0") + " %\n";
 
-            // _heliHUD.text
-            _heliHUD.text += "Airspeed: " + (_rigidbody.velocity.magnitude * 3.6f).ToString("F0") + " km/h\n";
+            // if _airspeedType is HelicopterAirspeedType.mph
+            if (_airspeedType == HelicopterAirspeedType.mph)
+            {
+                // 2.23694 is the constant to convert a value from m
+
+                // _heliHUD.text Airspeed
+                _heliHUD.text += "Airspeed: " + (_rigidbody.velocity.magnitude * 2.23694f).ToString("F0") + " mph\n";
+
+            } // close if _airspeedType is HelicopterAirspeedType.mph
+
+            // else if _airspeedType is HelicopterAirspeedType.kmh
+            else if (_airspeedType == HelicopterAirspeedType.kmh)
+            {
+                // 3.6 is the constant to convert a value from m/s to km/h
+
+                // _heliHUD.text Airspeed
+                _heliHUD.text += "Airspeed: " + (_rigidbody.velocity.magnitude * 3.6f).ToString("F0") + " kmh\n";
+
+            } // close else if _speedType is HelicopterAirspeedType.kmh
 
             // _heliHUD.text
             _heliHUD.text += "Altitude: " + transform.position.y.ToString("F0") + " m";
