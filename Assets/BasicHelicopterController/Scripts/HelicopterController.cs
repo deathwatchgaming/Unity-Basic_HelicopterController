@@ -173,7 +173,17 @@ namespace BasicHelicopterController
             
             // _rotorsTransformTop
             _rotorsTransformTop.Rotate(Vector3.up * (_maxThrust * _throttle) * _rotorSpeedModifier);
-           
+
+            // Tail Rotor Rotate Roll or Yaw is 0
+
+            // if Input GetAxis _heliRollInput is 0 or Input GetAxis _heliYawInput is 0
+            if (Input.GetAxis(_heliRollInput) == 0 || Input.GetAxis(_heliYawInput) == 0)
+            {
+                // _rotorsTransformTail Rotate
+                _rotorsTransformTail.Rotate(Vector3.right * _throttle * _rotorSpeedModifier);
+
+            } // close if Input GetAxis _heliRollInput is 0 or Input GetAxis _heliYawInput is 0
+
             // Tail Rotor Yaw Rotate
 
             // if Input GetAxis _heliYawInput is less than 0
