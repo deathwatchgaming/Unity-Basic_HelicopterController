@@ -413,11 +413,11 @@ Rb Adjustments:
 Rigibody Mass: 360
 Center Of Mass Offset: X: 0 Y: 0.7 Z: 1
 
-Audio:
-------
+Transforms:
+-----------
 
-Audio Source: MD-500 (Audio Source)
-Rotor Sound: Helicopter_Rotor
+Rotors Transform Top: Top_rotor (Transform)
+Rotors Transform Tail: Tail_Rotor (Transform)
 
 Amounts:
 --------
@@ -427,12 +427,32 @@ Throttle Amount: 25
 Max Thrust: 5
 Rotor speed Modifier: 10
 
+Airspeed:
+---------
 
-Transforms:
------------
+Airspeed Type: Mph *
 
-Rotors Transform Top: Top_rotor (Transform)
-Rotors Transform Tail: Tail_Rotor (Transform)
+* or Kmh depending on your desired choice
+
+Max Airspeed: 152 *
+
+* 152 is max suggested for Mph else say 244 for Kmh for example if such was
+  selected
+
+HUD:
+----
+
+Heli HUD: HelicopterHUD * 
+
+* This will need to be returned to and to then be selected
+once you set the interface text mesh pro hud item up in the later step as
+described.
+
+Audio:
+------
+
+Audio Source: MD-500 (Audio Source)
+Rotor Sound: Helicopter_Rotor
 
 
 -----------------------------------------------------------------------------------
