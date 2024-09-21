@@ -318,10 +318,21 @@ Scale:    X: 1 Y: 1   Z: 1
 
 * Disable the bool in Inspector as this camera is currently just added as an 
 optional example and is not currently used, but you could opt for either or a 
-future switch method or what not, hence why such is added as an example of two 
+future switch method or what not, hence why such is added as an example of three 
 diff views.
 
-Secondly, add a camera named: "Rear Camera" *
+Secondly, add a camera named: "Belly Camera" *
+
+Position: X: 0 Y: 84 Z: 92
+Rotation: X: 0 Y: 0   Z: 0 
+Scale:    X: 1 Y: 1   Z: 1
+
+* Disable the bool in Inspector as this camera is currently just added as an 
+optional example and is not currently used, but you could opt for either or a 
+future switch method or what not, hence why such is added as an example of three 
+diff views.
+
+Lastly, add a camera named: "Rear Camera" *
 
 * Keep this camera Active as this is the camera we will use (for now).
 
@@ -343,7 +354,7 @@ Position: X: 0 Y: 0  Z: 0
 Rotation: X: 0 Y: 0  Z: 0 
 Scale:    X: 1 Y: 1  Z: 1
 
-Next, you can then (drag into / add) both cameras into the "empty": "View"
+Next, you can then (drag into / add) the three cameras into the "empty": "View"
 
 
 So, now overall your heirarchy expanded should look like so:
@@ -362,6 +373,7 @@ HelicopterController
 -- Top_rotor
 -- View
 --- Cockpit Camera
+--- Belly Camera
 --- Rear Camera
 HeliPad
 
@@ -501,9 +513,33 @@ Next: In "Interface": add as child: "Canvas"
 Layer: UI
 
 
+
 -----------------------------------------------------------------------------------
 
-Step 15: In "Canvas": add as child: (UI > Text-TexMeshPro) called: "HelicopterHUD"
+Step 15: In "Canvas": add as child: An Empty called: "VehiclesHUD"
+
+-----------------------------------------------------------------------------------
+
+
+Position: X: 0 Y: 0 Z: 0 
+Rotation: X: 0 Y: 0 Z: 0 
+Scale:    X: 1 Y: 1 Z: 1
+
+Layer: UI
+
+Rect Transform:
+
+Bottom Left
+
+Pos X: 0 Y : 0 Z: 0
+
+Width: 300 
+Height: 300
+
+
+-----------------------------------------------------------------------------------
+
+Step 16: In "VehiclesHUD": add child: (UI > Text-TexMeshPro) called: "HelicopterHUD"
 
 -----------------------------------------------------------------------------------
 
@@ -512,6 +548,8 @@ Layer: UI
 
 Rect Transform:
 ---------------
+
+Middle Center
 
 Pos X: 160
 Pos Y: 60
@@ -560,17 +598,19 @@ HelicopterController
 -- Top_rotor
 -- View
 --- Cockpit Camera
+--- Belly Camera
 --- Rear Camera
 HeliPad
 Interface
 - Canvas
--- HelicopterHUD
+-- VehiclesHUD
+--- HelicopterHUD
 EventSystem
 
 
 -----------------------------------------------------------------------------------
 
-Step 16: Exit "Interface" & Add Script: "CameraSwitcher.cs" to "MD-500" object
+Step 17: Exit "Interface" & Add Script: "CameraSwitcher.cs" to "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -580,19 +620,20 @@ On the "MD-500 object"...
 Add Component: CameraSwitcher (Script)
 
 Then re-enable the previously disabled camera named: "Cockpit Camera"
-
-
------------------------------------------------------------------------------------
-
-Step 17: Modify Settings for: "Camera Switcher (Script)" 
+Then re-enable the previously disabled camera named: "Belly Camera"
 
 -----------------------------------------------------------------------------------
 
+Step 18: Modify Settings for: "Camera Switcher (Script)" 
 
-Cameras: 2
+-----------------------------------------------------------------------------------
+
+
+Cameras: 3
 
 Element 0: Rear Camera
-Element 1: Cockpit Camera
+Element 1: Belly Camera
+Element 2: Cockpit Camera
 
 Input:
 ------
