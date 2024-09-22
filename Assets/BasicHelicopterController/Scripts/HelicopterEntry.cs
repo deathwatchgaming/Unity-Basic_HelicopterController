@@ -178,18 +178,6 @@ namespace BasicHelicopterController
             // _rigidbody
             _rigidbody = GetComponent<Rigidbody>();
 
-            // _interfaceTextObject is GameObject Find Helicopter_EntryKey
-            //_interfaceTextObject = GameObject.Find("Helicopter_EntryKey");
-
-            // _interfaceTextObject SetActive is false
-            //_interfaceTextObject.SetActive(false);
-
-            // _interfaceHUDObject is GameObject Find Helicopter_HUD
-            //_interfaceHUDObject = GameObject.Find("Helicopter_HUD");
-
-            // _interfaceHUDObject SetActive is false
-            //_interfaceHUDObject.SetActive(false);
-
             // GameObject _interfaceTextObject is FindInActiveObjectByName Helicopter_EntryKey
             GameObject _interfaceTextObject = FindInActiveObjectByName("Helicopter_EntryKey");
 
