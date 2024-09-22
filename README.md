@@ -34,7 +34,7 @@ continue to expand upon this script further.
 
 Player Controls:
 ----------------
- (player controller provided for entry scipt example)
+ (player controller provided for entry script example)
 
 * Player Forward:   W
 * Player Reverse:   S
