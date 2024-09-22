@@ -884,11 +884,13 @@ Element 3: "Footstep04"
 That is it! You should now be able to run around your scene with your player
 controller and enter / exit your helicopter controller!
 
-Note: the provided entry script is provided "as is" simply as a starting point
-as there are some further things that will need to be touched upon as you
-will find when you start tinkering with such. So note tthe staing point was
-the intention to then allow you the user to continue to expand upon this
-script further.
+
+Entry Script Note: the provided entry script is provided "as is" simply as a
+starting point as there are some further things that will need to be touched
+upon as you will find when you start tinkering with such. So note the
+starting point provided was the intention to then allow you the user to
+continue to expand upon this script further.
+
 
 Ok, that is it and concludes the basic Helicopter Controller with entry manual
 setup steps. You can now begin to modify such further for your specific
