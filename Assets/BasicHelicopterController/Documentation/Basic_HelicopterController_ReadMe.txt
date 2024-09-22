@@ -17,7 +17,7 @@ Yaw:  Q & E
 Decrease throttle: Left Shift
 Increase throttle: Left Control
 
-Change Cameras: V (ie: Rear Camera & Cockpit Camera)
+Change Cameras: V (ie: Rear Camera, Belly Camera & Cockpit Camera)
 
 
 Manual Setup Instruction:
@@ -220,6 +220,7 @@ setup at this time.
 Step 8: Add Model(s): "Helicopter Land" & "MD-500"
 
 -----------------------------------------------------------------------------------
+
 
 Visit in "BasicHelicopterController/Models/Helicopter-Land-Helipad/Source"...
 the model Helicopter Land.fbx
@@ -454,7 +455,7 @@ Max Airspeed: 152 *
 HUD:
 ----
 
-Heli HUD: HelicopterHUD * 
+Heli HUD: Helicopter_HUD * 
 
 * This will need to be returned to and to then be selected
 once you set the interface text mesh pro hud item up in the later step as
@@ -539,7 +540,7 @@ Height: 300
 
 -----------------------------------------------------------------------------------
 
-Step 16: In "VehiclesHUD": add child: (UI > Text-TexMeshPro) called: "HelicopterHUD"
+Step 16: In "VehiclesHUD": add child: (Text-TexMeshPro) called: "Helicopter_HUD"
 
 -----------------------------------------------------------------------------------
 
@@ -581,7 +582,6 @@ Text Size: 25
 Alignment: Left & Middle
 
 
-
 So, now overall your heirarchy expanded should look like so:
 
 ie:
@@ -604,7 +604,7 @@ HeliPad
 Interface
 - Canvas
 -- VehiclesHUD
---- HelicopterHUD
+--- Helicopter_HUD
 EventSystem
 
 
@@ -621,6 +621,7 @@ Add Component: CameraSwitcher (Script)
 
 Then re-enable the previously disabled camera named: "Cockpit Camera"
 Then re-enable the previously disabled camera named: "Belly Camera"
+
 
 -----------------------------------------------------------------------------------
 
