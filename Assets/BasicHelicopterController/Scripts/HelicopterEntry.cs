@@ -85,7 +85,7 @@ namespace BasicHelicopterController
         // Rigidbody _rigidbody
         private Rigidbody _rigidbody;
 
-        [Tooltip("The cameras ie: 0: Rear Camera & 1: Cockpit Camera")]
+        [Tooltip("The cameras ie: 0: Rear Camera, 1: Belly Camera & 2: Cockpit Camera")]
         // private Camera[] _cameras
         [SerializeField] private Camera[] _cameras;
 
