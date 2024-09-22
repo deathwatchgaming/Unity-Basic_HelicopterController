@@ -14,7 +14,7 @@ namespace BasicHelicopterController
     // public class CameraSwitcher
     public class CameraSwitcher : MonoBehaviour 
     {
-        [Tooltip("The cameras ie: 0: Rear Camera & 1: Cockpit Camera")]
+        [Tooltip("The cameras ie: 0: Rear Camera, 1: Belly Camera & 2: Cockpit Camera")]
         // private Camera[] _cameras
         [SerializeField] private Camera[] _cameras;
 
