@@ -785,7 +785,24 @@ Element 2: Rear Camera
 
 -----------------------------------------------------------------------------------
 
-Step 22: Create: object "Player":
+Step 22: Edit: component: "Box Collider":
+
+-----------------------------------------------------------------------------------
+
+Is Trigger: True
+
+Center: X:  Y: 177.82  Z: 172.4728
+
+Size: X: 538.356 Y: 304.3953  Z: 226.408
+
+
+Note: these values are simply provided as an example and may need to be
+tweaked further to your likings.
+
+
+-----------------------------------------------------------------------------------
+
+Step 23: Create: object "Player":
 
 -----------------------------------------------------------------------------------
 
@@ -804,7 +821,7 @@ Add Tag: "Player"
 
 -----------------------------------------------------------------------------------
 
-Step 23: Add: empty object "View":
+Step 24: Add: empty object "View":
 
 -----------------------------------------------------------------------------------
 
@@ -817,7 +834,7 @@ Transform Position: X: 0 Y: 0 Z: 0
 
 -----------------------------------------------------------------------------------
 
-Step 24: Add: "Camera":
+Step 25: Add: "Camera":
 
 -----------------------------------------------------------------------------------
 
@@ -839,7 +856,7 @@ Add Tag: "MainCamera"
 
 -----------------------------------------------------------------------------------
 
-Step 25: Edit: the "CharacterController" component:
+Step 26: Edit: the "CharacterController" component:
 
 -----------------------------------------------------------------------------------
 
@@ -851,7 +868,7 @@ Height: "1.8"
 
 -----------------------------------------------------------------------------------
 
-Step 26: Add Component: "First Person Controller (Script)"
+Step 27: Add Component: "First Person Controller (Script)"
 
 -----------------------------------------------------------------------------------
 
@@ -861,7 +878,7 @@ Add: "FirstPersonController.cs" script to object: "Player"
 
 -----------------------------------------------------------------------------------
 
-Step 27: Setup: Audio Source and Footstep Sounds Audio Clips:
+Step 28: Setup: Audio Source and Footstep Sounds Audio Clips:
 
 -----------------------------------------------------------------------------------
 
