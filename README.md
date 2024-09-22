@@ -17,12 +17,38 @@ Controls:
 * Change Cameras: V (ie: Rear Camera, Belly Camera & Cockpit Camera)
 
 
+Entry:
+------
+ (if the provided "as is" entry script is added)
+
+* Enter: E
+* Exit: F
+
+
+Player Controls:
+----------------
+ (player controller provided for entry scipt example)
+
+Player Forward:   W
+Player Reverse:   S
+Player Left:      A
+Player Right:     D
+Player Jump:      Space
+Player Sprint:    Left Shift
+
+
 Manual Setup Instruction:
 -------------------------
 
-Simply follow the instruction for manual setup found below:
+Simply follow the instruction for manual setup(s) found below:
 
-* "ReadMe" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Documentation/Basic_HelicopterController_ReadMe.txt 
+* Helicopter Controller only "ReadMe" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Documentation/Basic_HelicopterController_ReadMe.txt 
+
+
+* Helicopter Controller with Entry "ReadMe" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Documentation/Basic_HelicopterController_wEntry_ReadMe.txt 
+
+
+* Player Controller "ReadMe" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/PlayerControl/Documentation/PlayerControl-Documentation.txt
 
 
  NOTE: 1 Helicopter model being: "MD-500 Defender Helicopter", is included for setup and usage example.
