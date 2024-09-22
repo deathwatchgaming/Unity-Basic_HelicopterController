@@ -25,16 +25,23 @@ Entry:
 * Exit: F
 
 
+Entry Script Note: the provided entry script is provided "as is" simply as a
+starting point as there are some further things that will need to be touched
+upon as you will find when you start tinkering with such. So note the
+starting point provided was the intention to then allow you the user to
+continue to expand upon this script further.
+
+
 Player Controls:
 ----------------
  (player controller provided for entry scipt example)
 
-Player Forward:   W
-Player Reverse:   S
-Player Left:      A
-Player Right:     D
-Player Jump:      Space
-Player Sprint:    Left Shift
+* Player Forward:   W
+* Player Reverse:   S
+* Player Left:      A
+* Player Right:     D
+* Player Jump:      Space
+* Player Sprint:    Left Shift
 
 
 Manual Setup Instruction:
