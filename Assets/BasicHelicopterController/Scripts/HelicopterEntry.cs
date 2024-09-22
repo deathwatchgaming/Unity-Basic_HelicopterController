@@ -89,6 +89,35 @@ namespace BasicHelicopterController
         // private Camera[] _cameras
         [SerializeField] private Camera[] _cameras;
 
+        // GameObject FindInActiveObjectByName string name
+        GameObject FindInActiveObjectByName(string name)
+        {
+            // Transform[] objs
+            Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+
+            // for 
+            for (int i = 0; i < objs.Length; i++)
+            {
+                // if
+                if (objs[i].hideFlags == HideFlags.None)
+                {
+                    // if
+                    if (objs[i].name == name)
+                    {
+                        // return 
+                        return objs[i].gameObject;
+
+                    } // close if
+
+                } // close if
+
+            } // close for
+
+            // return null
+            return null;
+
+        } // close GameObject FindInActiveObjectByName string name
+
         // private void Start
         private void Start() 
         {
@@ -150,14 +179,26 @@ namespace BasicHelicopterController
             _rigidbody = GetComponent<Rigidbody>();
 
             // _interfaceTextObject is GameObject Find Helicopter_EntryKey
-            _interfaceTextObject = GameObject.Find("Helicopter_EntryKey");
+            //_interfaceTextObject = GameObject.Find("Helicopter_EntryKey");
 
             // _interfaceTextObject SetActive is false
-            _interfaceTextObject.SetActive(false);
+            //_interfaceTextObject.SetActive(false);
 
             // _interfaceHUDObject is GameObject Find Helicopter_HUD
-            _interfaceHUDObject = GameObject.Find("Helicopter_HUD");
+            //_interfaceHUDObject = GameObject.Find("Helicopter_HUD");
 
+            // _interfaceHUDObject SetActive is false
+            //_interfaceHUDObject.SetActive(false);
+
+            // GameObject _interfaceTextObject is FindInActiveObjectByName Helicopter_EntryKey
+            GameObject _interfaceTextObject = FindInActiveObjectByName("Helicopter_EntryKey");
+
+            // _interfaceTextObject SetActive is false
+            _interfaceTextObject.SetActive(false); 
+
+            // GameObject _interfaceHUDObject is FindInActiveObjectByName Helicopter_HUD 
+            GameObject _interfaceHUDObject = FindInActiveObjectByName("Helicopter_HUD");
+            
             // _interfaceHUDObject SetActive is false
             _interfaceHUDObject.SetActive(false);
 

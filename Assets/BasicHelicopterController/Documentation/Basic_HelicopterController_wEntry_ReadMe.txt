@@ -629,6 +629,12 @@ Interface
 EventSystem
 
 
+Note: Mkay, now you should deactivate the object "Helicopter_HUD" because we
+don't want it displayed before play mode is awake or start if that makes
+sense... dont worry, as the entry script has a find inactive wrapper that will
+sort that out on start
+
+
 -----------------------------------------------------------------------------------
 
 Step 17: Exit "Interface" & Add Script: "CameraSwitcher.cs" to "MD-500" object
@@ -736,6 +742,12 @@ Interface
 -- VehiclesEntry
 --- Helicopter_EntryKey
 EventSystem
+
+
+Note: Mkay, now you should deactivate the object "Helicopter_EntryKey" because we
+don't want it displayed before play mode is awake or start if that makes
+sense... dont worry, as the entry script has a find inactive wrapper that will
+sort that out on start
 
 
 -----------------------------------------------------------------------------------
