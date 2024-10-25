@@ -89,7 +89,7 @@ namespace BasicHelicopterController
         // private Camera[] _cameras
         [SerializeField] private Camera[] _cameras;
 
-        // GameObject FindInActiveObjectByName string name
+        // GameObject FindInActiveObjectByName
         GameObject FindInActiveObjectByName(string name)
         {
             // Transform[] objs
@@ -116,7 +116,7 @@ namespace BasicHelicopterController
             // return null
             return null;
 
-        } // close GameObject FindInActiveObjectByName string name
+        } // close GameObject FindInActiveObjectByName
 
         // private void Start
         private void Start() 
@@ -158,7 +158,7 @@ namespace BasicHelicopterController
             _helicopterCamera02AudioListener.enabled = false;
 
             // _helicopterCamera03 is GetComponentInChildren Camera
-            _helicopterCamera03 = _cameras[2].GetComponentInChildren<Camera>();
+            _helicopterCamera03 = _cameras[1].GetComponentInChildren<Camera>();
 
             // _helicopterCamera03 enabled is false
             _helicopterCamera03.enabled = false;
@@ -178,13 +178,13 @@ namespace BasicHelicopterController
             // _rigidbody
             _rigidbody = GetComponent<Rigidbody>();
 
-            // GameObject _interfaceTextObject is FindInActiveObjectByName Helicopter_EntryKey
+            // GameObject _interfaceTextObject 
             GameObject _interfaceTextObject = FindInActiveObjectByName("Helicopter_EntryKey");
 
             // _interfaceTextObject SetActive is false
             _interfaceTextObject.SetActive(false); 
 
-            // GameObject _interfaceHUDObject is FindInActiveObjectByName Helicopter_HUD 
+            // GameObject _interfaceHUDObject 
             GameObject _interfaceHUDObject = FindInActiveObjectByName("Helicopter_HUD");
             
             // _interfaceHUDObject SetActive is false

@@ -39,7 +39,7 @@ namespace BasicHelicopterController
             // Turn all cameras off except the first default one
 
             // for
-            for (int i = 1; i < _cameras.Length; i++) 
+            for (int i = 1; i < _cameras.Length; i++)
             {
                 // _cameras[i] gameObject SetActive is false
                 _cameras[i].gameObject.SetActive(false);

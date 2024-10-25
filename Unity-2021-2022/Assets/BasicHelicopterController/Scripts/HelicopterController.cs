@@ -6,7 +6,7 @@
 */
 
 // Using
-using UnityEngine;
+using UnityEngine; 
 using System;
 using TMPro;
 
@@ -104,6 +104,10 @@ namespace BasicHelicopterController
             // private float _maxThrust
             [SerializeField] private float _maxThrust = 5f;
 
+            [Tooltip("The Rotor Speed Modifier")]        
+            // private float _rotorSpeedModifier
+            [SerializeField] private float _rotorSpeedModifier = 10f;
+
             // private float _throttle  
             private float _throttle;
        
@@ -116,11 +120,7 @@ namespace BasicHelicopterController
             // private float _heliYaw
             private float _heliYaw;
 
-            [Tooltip("The Rotor Speed Modifier")]        
-            // private float _rotorSpeedModifier
-            [SerializeField] private float _rotorSpeedModifier = 10f;
-
-        // Airspeed
+        // Speed
         [Header("Airspeed")]
 
             [Tooltip("The Airspeed Measurement Unit")]
@@ -134,7 +134,7 @@ namespace BasicHelicopterController
         // HUD
         [Header("HUD")]
 
-            [Tooltip("The interface TextMeshPro HUD")]
+            [Tooltip("The Interface TextMeshPro HUD")]
             // private TextMeshProUGUI _heliHUD
             [SerializeField] private TextMeshProUGUI _heliHUD;
 
@@ -160,17 +160,17 @@ namespace BasicHelicopterController
             // _rigidbody GetComponent Rigidbody
             _rigidbody = GetComponent<Rigidbody>();
 
-            // _rigidbody mass
+            // _rigidbody mass is _rigidbodyMass
             _rigidbody.mass = _rigidbodyMass;
 
             // Adjust the rigibody center of mass on X,Y,Z to help prevent the helicopter from tipping over
-            // _rigidbody centerOfMass
+            // _rigidbody centerOfMass is _centerOfMassOffset
             _rigidbody.centerOfMass = _centerOfMassOffset; 
 
             // _meshCollider GetComponent MeshCollider
             _meshCollider = GetComponent<MeshCollider>();
 
-            // _meshCollider convex
+            // _meshCollider convex is true
             _meshCollider.convex = true;
             
             // _audioSource GetComponent AudioSource
@@ -191,10 +191,10 @@ namespace BasicHelicopterController
 
             // UpdateHUD
             UpdateHUD();
-            
+              
             // Top Rotor Rotate
             
-            // _rotorsTransformTop
+            // _rotorsTransformTop Rotate
             _rotorsTransformTop.Rotate(Vector3.up * (_maxThrust * _throttle) * _rotorSpeedModifier);
 
             // Tail Rotor Rotate Roll or Yaw is 0
@@ -212,7 +212,7 @@ namespace BasicHelicopterController
             // if Input GetAxis _heliYawInput is less than 0
             if (Input.GetAxis(_heliYawInput) < 0)
             {
-                // _rotorsTransformTail
+                // _rotorsTransformTail Rotate
                 _rotorsTransformTail.Rotate(Vector3.left * (_maxThrust * _throttle) * _rotorSpeedModifier);
 
             } // close if Input GetAxis _heliYawInput is less than 0
@@ -220,7 +220,7 @@ namespace BasicHelicopterController
             // if Input GetAxis _heliYawInput is greater than 0
             if (Input.GetAxis(_heliYawInput) > 0)
             {
-                // _rotorsTransformTail
+                // _rotorsTransformTail Rotate
                 _rotorsTransformTail.Rotate(Vector3.right * (_maxThrust * _throttle) * _rotorSpeedModifier);
 
             } // close if Input GetAxis _heliYawInput is greater than 0
@@ -230,7 +230,7 @@ namespace BasicHelicopterController
             // if Input GetAxis _heliRollInput is less than 0
             if (Input.GetAxis(_heliRollInput) < 0)
             {
-                // _rotorsTransformTail
+                // _rotorsTransformTail Rotate
                 _rotorsTransformTail.Rotate(Vector3.left * (_maxThrust * _throttle) * _rotorSpeedModifier);
 
             } // close if Input GetAxis _heliRollInput is less than 0
@@ -238,7 +238,7 @@ namespace BasicHelicopterController
             // if Input GetAxis _heliRollInput is greater than 0
             if (Input.GetAxis(_heliRollInput) > 0)
             {
-                // _rotorsTransformTail
+                // _rotorsTransformTail Rotate
                 _rotorsTransformTail.Rotate(Vector3.right * (_maxThrust * _throttle) * _rotorSpeedModifier);
 
             } // close if Input GetAxis _heliRollInput is greater than 0
@@ -287,40 +287,40 @@ namespace BasicHelicopterController
             // _heliYaw
             _heliYaw = Input.GetAxis(_heliYawInput);
 
-            // _rotorCheck false
+            // _rotorCheck is false
             _rotorCheck = false;
             
-            // if Input GetKey LeftControl
+            // if Input GetKey _maxThrottleKey
             if (Input.GetKey(_maxThrottleKey))
             {
                 // _throttle
                 _throttle += Time.deltaTime * _throttleAmount;
                 
-                // if Input GetKeyDown LeftControl
+                // if Input GetKeyDown _maxThrottleKey
                 if (Input.GetKeyDown(_maxThrottleKey))
                 {
-                    // _rotorCheck true
+                    // _rotorCheck is true
                     _rotorCheck = true;
 
-                } // close if Input GetKeyDown LeftControl
+                } // close if Input GetKeyDown _maxThrottleKey
 
-            } // close if Input GetKey LeftControl
+            } // close if Input GetKey _maxThrottleKey
             
-            // else if Input GetKey LeftShift
+            // else if Input GetKey _minThrottleKey
             else if (Input.GetKey(_minThrottleKey))
             {
                 // _throttle
                 _throttle -= Time.deltaTime * _throttleAmount;
                 
-                // if Input GetKeyDown LeftShift
+                // if Input GetKeyDown _minThrottleKey
                 if (Input.GetKeyDown(_minThrottleKey))
                 {
-                    // _rotorCheck true
+                    // _rotorCheck is true
                     _rotorCheck = true;
 
-                } // close if Input GetKeyDown LeftShift
+                } // close if Input GetKeyDown _minThrottleKey
 
-            } // close else if Input GetKey LeftShift 
+            } // close else if Input GetKey _minThrottleKey
             
             // _throttle
             _throttle = Mathf.Clamp(_throttle, 0f, 100f);
@@ -376,7 +376,7 @@ namespace BasicHelicopterController
         // private void UpdateHUD
         private void UpdateHUD()
         {
-            // _heliHUD.text
+            // _heliHUD.text Throttle
             _heliHUD.text = "Throttle: " + _throttle.ToString("F0") + " %\n";
 
             // if _airspeedType is HelicopterAirspeedType.mph
@@ -390,7 +390,7 @@ namespace BasicHelicopterController
                 // 0.3048 is the constant to convert from m to ft ie: 0.3048 m = 1 ft thus altitude in m divided by 0.3048 gets feet
 
                 // _heliHUD.text Altitude
-                _heliHUD.text += "Altitude: " + (transform.position.y / 0.3048f).ToString("F0") + " ft"; 
+                _heliHUD.text += "Altitude: " + (transform.position.y / 0.3048f).ToString("F0") + " ft";                
 
             } // close if _airspeedType is HelicopterAirspeedType.mph
 
@@ -405,7 +405,7 @@ namespace BasicHelicopterController
                 // m is default measurement unit hence keep as is since we want to keep m when kmh speed type selected
 
                 // _heliHUD.text Altitude
-                _heliHUD.text += "Altitude: " + transform.position.y.ToString("F0") + " m";                
+                _heliHUD.text += "Altitude: " + transform.position.y.ToString("F0") + " m";
 
             } // close else if _speedType is HelicopterAirspeedType.kmh
 
@@ -414,7 +414,7 @@ namespace BasicHelicopterController
         // private void PlayRotorSound
         private void PlayRotorSound()
         {
-            // _audioSource clip
+            // _audioSource clip is _rotorSound
             _audioSource.clip = _rotorSound;
 
             // _audioSource loop is true
@@ -423,7 +423,7 @@ namespace BasicHelicopterController
             // _audioSource Play      
             _audioSource.Play();
 
-        } // close private void PlayRotorSound 
+        } // close private void PlayRotorSound     
 
     } // close public class HelicopterController
 
