@@ -158,7 +158,7 @@ namespace BasicHelicopterController
             _helicopterCamera02AudioListener.enabled = false;
 
             // _helicopterCamera03 is GetComponentInChildren Camera
-            _helicopterCamera03 = _cameras[1].GetComponentInChildren<Camera>();
+            _helicopterCamera03 = _cameras[2].GetComponentInChildren<Camera>();
 
             // _helicopterCamera03 enabled is false
             _helicopterCamera03.enabled = false;
