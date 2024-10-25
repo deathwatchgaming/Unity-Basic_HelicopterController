@@ -4,6 +4,8 @@ Description:
 
 Create a "Basic Helicopter Controller" for your Unity projects.
 
+NOTE: This project was developed while / for using Unity 2021+ & 2022+ & Unity 6
+
 Controls: 
 ---------
 
@@ -44,40 +46,19 @@ Player Controls:
 * Player Sprint:    Left Shift
 
 
-Manual Setup Instruction:
--------------------------
-
-Simply follow the instruction for manual setup(s) found below:
-
-* Helicopter Controller only "ReadMe" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Documentation/Basic_HelicopterController_ReadMe.txt 
-
-
-* Helicopter Controller with Entry "ReadMe" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Documentation/Basic_HelicopterController_wEntry_ReadMe.txt 
-
-
-* Player Controller "ReadMe" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/PlayerControl/Documentation/PlayerControl-Documentation.txt
-
-
  NOTE: 1 Helicopter model being: "MD-500 Defender Helicopter", is included for setup and usage example.
 
- MD-500 Defender Helicopter
---------------------------
-
- "MD-500 Defender Helicopter" (https://skfb.ly/6vHZs) by Duane's Mind is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-
-* Included model "Credits" file found @ https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Models/md-500-defender-helicopter/credits/MD-500%20Defender%20Helicopter%20Credits.txt
-
-* Included model "License" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Models/md-500-defender-helicopter/credits/License.txt
-
-
  NOTE: 1 Helipad model being: "Helicopter Land / Helipad / Heliport", is included for setup and usage example.
+ 
 
- Helipad
---------------------------
+ Manual Setup Instruction:
+-------------------------
 
- "Helicopter Land / Helipad / Heliport" (https://skfb.ly/oKxqJ) by muhammad.rihca is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/). 
+Simply follow the linkages found below  for documentation information / instruction respective to the version say for example either Unity 2021+ & Unity 2022+ or Unity 6....
 
-* Included model "Credits" file found @ https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Models/Helicopter-Land-Helipad/Credits/Helicopter-Land-Helipad-Heliport-Credits.txt
 
-* Included model "License" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Assets/BasicHelicopterController/Models/Helicopter-Land-Helipad/Credits/License.txt
+* Unity 20221+ & 2022+ => Files, ReadMe, docs: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/tree/main/Unity-2021-2022
+
+
+* Unity 6 => Files, ReadMe, docs: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Unity-6
 
