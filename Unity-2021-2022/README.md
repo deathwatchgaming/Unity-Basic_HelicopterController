@@ -4,7 +4,7 @@ Description:
 
 Create a "Basic Helicopter Controller" for your Unity projects.
 
-![Preview](https://raw.githubusercontent.com/Unity-Basic_HelicopterController/refs/heads/main/Previews/Helicopter-SideView1.png)
+![Preview](https://raw.githubusercontent.com/deathwatchgaming/Unity-Basic_HelicopterController/refs/heads/main/Previews/Helicopter-SideView1.png)
 
 
 NOTE: This project was developed while / for using Unity 2021+ & 2022+ 
