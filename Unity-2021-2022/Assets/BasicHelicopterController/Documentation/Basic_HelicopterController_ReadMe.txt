@@ -644,7 +644,7 @@ Camera Switch Key: V
 
 -----------------------------------------------------------------------------------
 
-Optional: (Controller only) Compas Usage
+Optional: (Controller only) Compass Usage
 
 -----------------------------------------------------------------------------------
 
