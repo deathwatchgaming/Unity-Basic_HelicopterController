@@ -62,6 +62,14 @@ Simply follow the instruction for manual setup(s) found below:
 * Player Controller "ReadMe" file found @: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Unity-6/Assets/PlayerControl/Documentation/PlayerControl-Documentation.txt
 
 
+
+Player and Vehicle Compass:
+----------------------------
+
+* Basic Helicopter with entry Player and Vehicle Compass setup: https://github.com/deathwatchgaming/Unity-Basic_HelicopterController/blob/main/Unity-6/Assets/NavigationControl/Compass/Documentation/Compass-Documentation.txt
+
+
+
  NOTE: 1 Helicopter model being: "MD-500 Defender Helicopter", is included for setup and usage example.
 
  MD-500 Defender Helicopter

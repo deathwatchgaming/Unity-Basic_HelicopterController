@@ -56,7 +56,7 @@ namespace BasicHelicopterController
                 _cameras[0].gameObject.SetActive(true);
 
                 // Debug Log
-                Debug.Log ("Camera with name: " + _cameras[0].GetComponent<Camera>().name + ", is now enabled");
+                //Debug.Log ("Camera with name: " + _cameras[0].GetComponent<Camera>().name + ", is now enabled");
 
             } // close if
 
@@ -88,7 +88,7 @@ namespace BasicHelicopterController
             currentCameraIndex++;
 
             // Debug Log
-            Debug.Log ("The change camera button has been pressed. Switching to the next camera");
+            //Debug.Log ("The change camera button has been pressed. Switching to the next camera");
 
             // if
             if (currentCameraIndex < _cameras.Length)
@@ -100,7 +100,7 @@ namespace BasicHelicopterController
                 _cameras[currentCameraIndex].gameObject.SetActive(true);
 
                 // Debug Log
-                Debug.Log ("Camera with name: " + _cameras[currentCameraIndex].GetComponent<Camera>().name + ", is now enabled");
+                //Debug.Log ("Camera with name: " + _cameras[currentCameraIndex].GetComponent<Camera>().name + ", is now enabled");
 
             } // close if
 
@@ -117,7 +117,7 @@ namespace BasicHelicopterController
                 _cameras[currentCameraIndex].gameObject.SetActive(true);
 
                 // Debug Log
-                Debug.Log ("Camera with name: " + _cameras[currentCameraIndex].GetComponent<Camera>().name + ", is now enabled");
+                //Debug.Log ("Camera with name: " + _cameras[currentCameraIndex].GetComponent<Camera>().name + ", is now enabled");
 
             } // close else
 

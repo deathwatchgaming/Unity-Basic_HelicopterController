@@ -9,6 +9,7 @@
 // using
 using UnityEngine;
 using System.Collections;
+using NavigationControl;
 
 // namespace BasicHelicopterController
 namespace BasicHelicopterController
@@ -119,9 +120,24 @@ namespace BasicHelicopterController
 
         } // close GameObject FindInActiveObjectByName
 
+        // Compass
+        [Header("Compass")]
+
+            [Tooltip("The player compass")]
+            // PlayerCompass _playerCompass
+            [SerializeField] private PlayerCompass _playerCompass;
+            
+            [Tooltip("The basic helicopter compass")]
+            // BasicHelicopterCompass _helicopterCompass
+            [SerializeField] private BasicHelicopterCompass _helicopterCompass;  
+
+        //public static HelicopterEntry _helicopterEntry;
+
         // private void Start
         private void Start() 
         {
+            //_helicopterEntry = this;
+
             // _helicopterScript is GetComponent HelicopterController
             _helicopterScript = GetComponent<HelicopterController>();
 
@@ -191,6 +207,26 @@ namespace BasicHelicopterController
             // _interfaceHUDObject SetActive is false
             _interfaceHUDObject.SetActive(false);
 
+            // Compass
+
+            // _playerCompass enabled is true
+            _playerCompass.enabled = true;
+
+            // _playerCompass compassEnabled is true
+            _playerCompass.compassEnabled = true;
+
+            // Debug Log
+            //Debug.Log("The Player compass is enabled");
+
+            // _helicopterCompass enabled is false
+            _helicopterCompass.enabled = false;
+
+            // _helicopterCompass compassEnabled is false
+            _helicopterCompass.compassEnabled = false;
+
+            // Debug Log
+            //Debug.Log("The Helicopter compass is disabled");            
+
         } // close private void Start
 
         // Update is called once per frame
@@ -236,6 +272,26 @@ namespace BasicHelicopterController
 
                 // _inHelicopter is false
                 _inHelicopter = false;
+
+                // Compass
+
+                // _playerCompass enabled is true
+                _playerCompass.enabled = true;
+
+                // _playerCompass compassEnabled is true
+                _playerCompass.compassEnabled = true;
+
+                // Debug Log
+                //Debug.Log("The Player compass is enabled");
+
+                // _helicopterCompass enabled is false
+                _helicopterCompass.enabled = false;
+
+                // _helicopterCompass compassEnabled is false
+                _helicopterCompass.compassEnabled = false;
+
+                // Debug Log
+                //Debug.Log("The Helicopter compass is disabled"); 
 
             } // close if _inHelicopter and Input GetKey KeyCode _exitKey
 
@@ -299,6 +355,26 @@ namespace BasicHelicopterController
 
                 // _inHelicopter is true
                 _inHelicopter = true;
+
+                // Compass
+
+                // _playerCompass enabled is false
+                _playerCompass.enabled = false;
+
+                // _playerCompass compassEnabled is false
+                _playerCompass.compassEnabled = false;
+
+                // Debug Log
+                //Debug.Log("The Player compass is disabled");
+
+                // _helicopterCompass enabled is true
+                _helicopterCompass.enabled = true;
+
+                // _helicopterCompass compassEnabled is true
+                _helicopterCompass.compassEnabled = true;
+
+                // Debug Log
+                //Debug.Log("The Helicopter compass is enabled"); 
 
             } // close if not _inHelicopter and gameObject tag is Player and Input GetKey KeyCode _enterKey
 

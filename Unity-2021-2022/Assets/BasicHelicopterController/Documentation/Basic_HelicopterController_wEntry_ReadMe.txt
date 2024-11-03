@@ -910,16 +910,23 @@ Element 3: "Footstep04"
 
 -----------------------------------------------------------------------------------
 
+Note: Lastly, you need to next follow the Player and Helicopter Compass setup
+steps to finalize the setup steps!
 
-That is it! You should now be able to run around your scene with your player
-controller and enter / exit your helicopter controller!
+Ok, hopefully I covered everything. After completion of those steps you should
+then be able to run around your scene with your player and then enter / exit
+and fly your helicopter around and see your direction by player and vehicle
+compass.
 
+-----------------------------------------------------------------------------------
 
 Entry Script Note: the provided entry script is provided "as is" simply as a
 starting point as there are some further things that will need to be touched
 upon as you will find when you start tinkering with such. So note the
 starting point provided was the intention to then allow you the user to
 continue to expand upon this script further.
+
+-----------------------------------------------------------------------------------
 
 
 Ok, that is it and concludes the basic Helicopter Controller with entry manual
