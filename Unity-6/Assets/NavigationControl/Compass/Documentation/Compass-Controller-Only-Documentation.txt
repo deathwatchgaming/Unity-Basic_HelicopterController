@@ -1,4 +1,4 @@
-Player & Basic Helicoper Compass Setup
+Basic Helicoper Compass Setup (Controller Only)
 --------------------------------------------------------------------------------
 
 
@@ -177,40 +177,16 @@ Change the folllowing settings as such:
 
 ------------------------------------------------------------------------------------
 
-Step 5: Add: Component / Script: PlayerCompass.cs
+Step 5: Add: Component / Script: BasicHelicopterCompass.cs
 
 ------------------------------------------------------------------------------------
 
 
 5.A) Go back to: Interface -> Canvas -> Compass
      
-     Add component / script: "PlayerCompass.cs"
-
-5.B) Ok, now fill out the related settings:
-
-For -> PlayerCompass (Script):
---------------------------------
-
-Script: PlayerCompass.cs
-Compass Foreground: Compass_Foreground (Raw Image)
-Compass Background: Compass_Background (Raw Image)
-Player: Player (Transform)
-Compass Direction: Compass_DegreeText (Text Mesh Pro)
-Compass Enabled: Check this 
-
-
-------------------------------------------------------------------------------------
-
-Step 6: Add: Component / Script: BasicHelicopterCompass.cs
-
-------------------------------------------------------------------------------------
-
-
-6.A) Go back to: Interface -> Canvas -> Compass
-     
      Add component / script: "BasicHelicopterCompass.cs"
 
-6.B) Ok, now fill out the related settings:
+5.B) Ok, now fill out the related settings:
 
 For -> BasicHelicopterCompass (Script):
 ------------------------------------------
@@ -220,26 +196,12 @@ Compass Foreground: Compass_Foreground (Raw Image)
 Compass Background: Compass_Background (Raw Image)
 Basic Helicopter: MD-500 (Transform)
 Compass Direction: Compass_DegreeText (Text Mesh Pro)
-Compass Enabled: Uncheck this 
+Compass Enabled: Check this 
 
 
 ------------------------------------------------------------------------------------
 
-Step 7: Edit Settings in: HelicopterEntry (Script)
-
-------------------------------------------------------------------------------------
-
-
-Compass
--------
-
-Player Compass: Compass (Player Compass)
-Helicopter Compass: Compass (Basic Helicopter Compass)
-
-
-------------------------------------------------------------------------------------
-
-Step 8: Finally, let us simply resize the compass
+Step 6: Finally, let us simply resize the compass
 
 ------------------------------------------------------------------------------------
 
