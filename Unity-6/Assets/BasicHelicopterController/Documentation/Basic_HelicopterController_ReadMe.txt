@@ -644,6 +644,18 @@ Camera Switch Key: V
 
 -----------------------------------------------------------------------------------
 
+Optional: (Controller only) Compas Usage
+
+-----------------------------------------------------------------------------------
+
+
+Note: Lastly, if you would like to have the compass for controller only usage
+you need to next follow the Helicopter Compass (Controller Only) setup steps
+to finalize that part of the setup steps!
+
+
+-----------------------------------------------------------------------------------
+
 Optional: Cursor Lock
 
 -----------------------------------------------------------------------------------
