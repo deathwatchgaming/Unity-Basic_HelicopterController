@@ -2,6 +2,7 @@
 Description:
 ------------
 
+
 Create a "Basic Helicopter Controller" for your Unity projects.
 
 ![Preview](https://raw.githubusercontent.com/deathwatchgaming/Unity-Basic_HelicopterController/refs/heads/main/Previews/Helicopter-SideView1.png)
@@ -16,6 +17,7 @@ or both is enabled in project settings.
 Controls: 
 ---------
 
+
 * Roll: A & D
 * Pitch: S & W
 * Yaw:  Q & E
@@ -28,6 +30,8 @@ Controls:
 
 Entry:
 ------
+
+
  (if the provided "as is" entry script is added)
 
 * Enter: E
@@ -43,6 +47,8 @@ continue to expand upon this script further.
 
 Player Controls:
 ----------------
+
+
  (player controller provided for entry script example)
 
 * Player Forward:   W
@@ -60,6 +66,7 @@ Player Controls:
 
  Manual Setup Instruction:
 -------------------------
+
 
 Simply follow the linkages found below  for documentation information / instruction respective to the version say for example either Unity 2021+ & Unity 2022+ or Unity 6....
 
