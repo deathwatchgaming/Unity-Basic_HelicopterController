@@ -6,6 +6,10 @@ Description:
 
 Create a "Basic Helicopter Controller" for your Unity projects.
 
+NOTE: This currently uses the New Input System so as such depending on what
+version of Unity you may be using it may be necessary to make sure such or
+both is enabled in project settings.
+
 
 Controls: 
 ---------
