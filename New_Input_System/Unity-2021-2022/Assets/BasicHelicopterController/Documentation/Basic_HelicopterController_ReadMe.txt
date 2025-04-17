@@ -6,7 +6,6 @@ Description:
 
 Create a "Basic Helicopter Controller" for your Unity projects.
 
-
 NOTE: This currently uses the New Input System so as such depending on what
 version of Unity you may be using it may be necessary to make sure such or
 both is enabled in project settings.
@@ -551,10 +550,12 @@ Element 0: Rear Camera
 Element 1: Belly Camera
 Element 2: Cockpit Camera
 
-Input:
-------
 
-Camera Switch Key: V
+Input Actions:
+--------------
+
+
+Helicopter Controls: HelicopterControls (Input Action Asset)
 
 
 -----------------------------------------------------------------------------------

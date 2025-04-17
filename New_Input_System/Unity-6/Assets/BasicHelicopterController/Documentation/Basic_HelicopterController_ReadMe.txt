@@ -550,10 +550,12 @@ Element 0: Rear Camera
 Element 1: Belly Camera
 Element 2: Cockpit Camera
 
-Input:
-------
 
-Camera Switch Key: V
+Input Actions:
+--------------
+
+
+Helicopter Controls: HelicopterControls (Input Action Asset)
 
 
 -----------------------------------------------------------------------------------

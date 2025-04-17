@@ -7,39 +7,41 @@ Description:
 Create a "Basic Helicopter Controller" with entry for your Unity projects.
 
 
+NOTE: This currently uses the New Input System (ie: Unity 6 variant provided),
+so as such depending on what version of Unity you may be using it may be
+necessary to make sure such or both is enabled in project settings.
+
+
 Helicopter Controls: 
 --------------------
 
-Roll: A & D
-Pitch: S & W
-Yaw:  Q & E
+Roll: A & D [Keyboard] / Left Stick [Gamepad]
+Pitch: S & W [Keyboard] / Left Stick [Gamepad] 
+Yaw:  Q & E [Keyboard] / Right Stick [Gamepad]
+Decrease throttle: Shift [Keyboard] / D-Pad Down [Gamepad]
+Increase throttle: Control [Keyboard] / D-Pad Up [Gamepad] 
+Change Cameras: V [Keyboard] / D-Pad Left [Gamepad] * 
 
-Decrease throttle: Left Shift
-Increase throttle: Left Control
-
-
-Camera Controls:
-----------------
-
-Change Cameras: V (ie: Rear Camera, Belly Camera & Cockpit Camera)
+* (ie: Rear Camera, Belly Camera & Cockpit Camera) 
 
 
 Helicopter Entry Controls:
 --------------------------
 
-Entry: E
-Exit: F
+Enter Vehicle:      E [Keyboard] / Button North [Gamepad] 
+Exit Vehicle:       F [Keyboard] / Button South [Gamepad] 
 
 
 Player Controls:
 ----------------
 
-Player Forward:   W
-Player Reverse:   S
-Player Left:      A
-Player Right:     D
-Player Jump:      Space
-Player Sprint:    Left Shift
+Player Forward:   W [Keyboard] / Left Stick [Gamepad]
+Player Reverse:   S [Keyboard] / Left Stick [Gamepad]
+Player Left:      A [Keyboard] / Left Stick [Gamepad]
+Player Right:     D [Keyboard] / Left Stick [Gamepad]
+Player Jump:      Space [Keyboard] / Button South [Gamepad] 
+Player Sprint:    Shift [Keyboard] / Left Shoulder [Gamepad]
+Player Look:      Delta [Mouse] / Right Stick [Gamepad]
 
 
 Manual Setup Instruction:
@@ -151,95 +153,7 @@ Scale:    X: 1 Y: 1 Z: 1
 
 -----------------------------------------------------------------------------------
 
-Step 5: Add Input: "Heli Roll"
-
------------------------------------------------------------------------------------
-
-
-In Edit -> Project Settings -> Input Manager:
-
-Add Input Axes: "Heli Roll"
-
-Name: Roll
-Negative Button: left
-Positive Button: right
-Alt Negative Button: a
-Alt Positive Button: d
-Gravity: 3
-Dead: 0.001
-Sensitivity: 3
-Snap: True (checked)
-Invert: False (unchecked)
-Type: Key or Mouse Button
-Axis: X axis
-Joy Num: Get Motion from all Joysticks
-
-Note: this is using the old input system and while yes, you could modify the script
-for new input system usage, currently that is not covered in the scope of this 
-setup at this time.
-
-
------------------------------------------------------------------------------------
-
-Step 6: Add Input: "Heli Pitch"
-
------------------------------------------------------------------------------------
-
-
-In Edit -> Project Settings -> Input Manager:
-
-Add Input Axes: "Heli Pitch"
-
-Name: Pitch
-Negative Button: down
-Positive Button: up
-Alt Negative Button: s
-Alt Positive Button: w
-Gravity: 3
-Dead: 0.001
-Sensitivity: 3
-Snap: True (checked)
-Invert: False (unchecked)
-Type: Key or Mouse Button
-Axis: X axis
-Joy Num: Get Motion from all Joysticks
-
-Note: this is using the old input system and while yes, you could modify the script
-for new input system usage, currently that is not covered in the scope of this 
-setup at this time.
-
-
------------------------------------------------------------------------------------
-
-Step 7: Add Input: "Heli Yaw"
-
------------------------------------------------------------------------------------
-
-
-In Edit -> Project Settings -> Input Manager:
-
-Add Input Axes: "Heli Yaw"
-
-Name: Yaw
-Negative Button: q
-Positive Button: e
-Gravity: 3
-Dead: 0.001
-Sensitivity: 3
-Snap: True (checked)
-Invert: False (unchecked)
-Type: Key or Mouse Button
-Axis: X axis
-Joy Num: Get Motion from all Joysticks
-
-Note: this is using the old input system and while yes, you could modify the script
-for new input system usage, currently that is not covered in the scope of this 
-setup at this time.
-
-
------------------------------------------------------------------------------------
-
-Step 8: Add Model(s): "Helicopter Land" & "MD-500"
+Step 5: Add Model(s): "Helicopter Land" & "MD-500"
 
 -----------------------------------------------------------------------------------
 
@@ -326,7 +240,7 @@ convex: true
 
 -----------------------------------------------------------------------------------
 
-Step 9: Add: "Camera(s)" to model "MD-500" object
+Step 6: Add: "Camera(s)" to model "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -403,7 +317,7 @@ HeliPad
 
 -----------------------------------------------------------------------------------
 
-Step 10: Add Script: "HelicopterController.cs" to model "MD-500" object
+Step 7: Add Script: "HelicopterController.cs" to model "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -415,7 +329,7 @@ Add Component: HelicopterController (BasicHelicopterController)
 
 -----------------------------------------------------------------------------------
 
-Step 11: Modify Settings for: "HelicopterController (Script)" 
+Step 8: Modify Settings for: "HelicopterController (Script)" 
 
 -----------------------------------------------------------------------------------
 
@@ -427,14 +341,6 @@ instead. So, in saying such, your settings should simply look like such:
 
 Script: HelicopterController
 
-Inputs:
--------
-
-Heli Roll Input: Heli Roll
-Heli Pitch Input: Heli Pitch
-Heli Yaw Input: Heli Yaw
-Min Throttle Key: Left Shift
-Max Throttle Key: Left Control
 
 Components:
 -----------
@@ -490,9 +396,16 @@ Audio Source: MD-500 (Audio Source)
 Rotor Sound: Helicopter_Rotor
 
 
+Input Actions:
+--------------
+
+
+Helicopter Controls: HelicopterControls (Input Action Asset)
+
+
 -----------------------------------------------------------------------------------
 
-Step 12: Modify Settings for: "Rigidbody (Component)" 
+Step 9: Modify Settings for: "Rigidbody (Component)" 
 
 -----------------------------------------------------------------------------------
 
@@ -506,7 +419,7 @@ Mass: 360
 
 -----------------------------------------------------------------------------------
 
-Step 13: Modify Settings for: "Mesh Collider (Component)" 
+Step 10: Modify Settings for: "Mesh Collider (Component)" 
 
 -----------------------------------------------------------------------------------
 
@@ -520,7 +433,7 @@ Convex: True (Bool checked)
 
 -----------------------------------------------------------------------------------
 
-Step 14: Outside of HelicopterController: Create Empty Game Object: "Interface"
+Step 11: Outside of HelicopterController: Create Empty Game Object: "Interface"
 
 -----------------------------------------------------------------------------------
 
@@ -538,7 +451,7 @@ Layer: UI
 
 -----------------------------------------------------------------------------------
 
-Step 15: In "Canvas": add as child: An Empty called: "VehiclesHUD"
+Step 12: In "Canvas": add as child: An Empty called: "VehiclesHUD"
 
 -----------------------------------------------------------------------------------
 
@@ -561,7 +474,7 @@ Height: 300
 
 -----------------------------------------------------------------------------------
 
-Step 16: In "VehiclesHUD": add child: (UI > Text-TMPro) called: "Helicopter_HUD"
+Step 13: In "VehiclesHUD": add child: (UI > Text-TMPro) called: "Helicopter_HUD"
 
 -----------------------------------------------------------------------------------
 
@@ -637,7 +550,7 @@ sort that out on start
 
 -----------------------------------------------------------------------------------
 
-Step 17: Exit "Interface" & Add Script: "CameraSwitcher.cs" to "MD-500" object
+Step 14: Exit "Interface" & Add Script: "CameraSwitcher.cs" to "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -652,7 +565,7 @@ Then re-enable the previously disabled camera named: "Belly Camera"
 
 -----------------------------------------------------------------------------------
 
-Step 18: Modify Settings for: "Camera Switcher (Script)" 
+Step 15: Modify Settings for: "Camera Switcher (Script)" 
 
 -----------------------------------------------------------------------------------
 
@@ -663,15 +576,16 @@ Element 0: Cockpit Camera
 Element 1: Belly Camera
 Element 2: Rear Camera
 
-Input:
-------
 
-Camera Switch Key: V
+Input Actions:
+--------------
+
+Helicopter Controls: HelicopterControls (Input Action Asset)
 
 
 -----------------------------------------------------------------------------------
 
-Step 19: In "Canvas": add as child: An Empty called: "VehiclesEntry"
+Step 16: In "Canvas": add as child: An Empty called: "VehiclesEntry"
 
 -----------------------------------------------------------------------------------
 
@@ -688,7 +602,7 @@ Height: 100
 
 -----------------------------------------------------------------------------------
 
-Step 20: In "VehiclesEntry": add child: (Text-TMPro) called: "Helicopter_EntryKey" 
+Step 17: In "VehiclesEntry": add child: (Text-TMPro) called: "Helicopter_EntryKey" 
 
 -----------------------------------------------------------------------------------
 
@@ -752,7 +666,7 @@ sort that out on start
 
 -----------------------------------------------------------------------------------
 
-Step 21: Exit "Interface" & Add Script: "HelicopterEntry.cs" to "MD-500" object
+Step 18: Exit "Interface" & Add Script: "HelicopterEntry.cs" to "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -763,14 +677,6 @@ Add Component: HelicopterEntry (Script)
 
 
 Script: HelicopterEntry
-
-
-Input Customisations:
----------------------
-
-Enter Key: E
-
-Exit Key: F
 
 
 Game Objects:
@@ -795,9 +701,15 @@ Element 1: Belly Camera
 Element 2: Rear Camera
 
 
+Input Actions:
+--------------
+
+Helicopter Controls: HelicopterControls (Input Action Asset)
+
+
 -----------------------------------------------------------------------------------
 
-Step 22: Edit component: "Box Collider"
+Step 19: Edit component: "Box Collider"
 
 -----------------------------------------------------------------------------------
 
@@ -815,7 +727,7 @@ tweaked further to your likings.
 
 -----------------------------------------------------------------------------------
 
-Step 23: Create: object "Player":
+Step 20: Create: object "Player":
 
 -----------------------------------------------------------------------------------
 
@@ -834,7 +746,7 @@ Add Tag: "Player"
 
 -----------------------------------------------------------------------------------
 
-Step 24: Add: empty object "View":
+Step 21: Add: empty object "View":
 
 -----------------------------------------------------------------------------------
 
@@ -847,7 +759,7 @@ Transform Position: X: 0 Y: 0 Z: 0
 
 -----------------------------------------------------------------------------------
 
-Step 25: Add: "Camera":
+Step 22: Add: "Camera":
 
 -----------------------------------------------------------------------------------
 
@@ -869,7 +781,7 @@ Add Tag: "MainCamera"
 
 -----------------------------------------------------------------------------------
 
-Step 26: Add Component: "First Person Controller (Script)"
+Step 23: Add Component: "First Person Controller (Script)"
 
 -----------------------------------------------------------------------------------
 
@@ -877,9 +789,15 @@ Step 26: Add Component: "First Person Controller (Script)"
 Add: "FirstPersonController.cs" script to object: "Player"
 
 
+Input Actions:
+--------------
+
+Player Controls: PlayerControls (Input Action Asset)
+
+
 -----------------------------------------------------------------------------------
 
-Step 27: Edit: the "CharacterController" component:
+Step 24: Edit: the "CharacterController" component:
 
 -----------------------------------------------------------------------------------
 
@@ -891,7 +809,7 @@ Height: "1.8"
 
 -----------------------------------------------------------------------------------
 
-Step 28: Setup: Audio Source and Footstep Sounds Audio Clips:
+Step 25: Setup: Audio Source and Footstep Sounds Audio Clips:
 
 -----------------------------------------------------------------------------------
 
