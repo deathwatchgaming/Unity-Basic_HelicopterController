@@ -10,14 +10,15 @@ Create a "Basic Helicopter Controller" for your Unity projects.
 Controls: 
 ---------
 
-Roll: A & D
-Pitch: S & W
-Yaw:  Q & E
+Roll: A & D [Keyboard] / Left Stick [Gamepad]
+Pitch: S & W [Keyboard] / Left Stick [Gamepad] 
+Yaw:  Q & E [Keyboard] / Right Stick [Gamepad]
+Decrease throttle: Shift [Keyboard] / D-Pad Down [Gamepad]
+Increase throttle: Control [Keyboard] / D-Pad Up [Gamepad] 
+Change Cameras: V [Keyboard] / D-Pad Left [Gamepad] * 
 
-Decrease throttle: Left Shift
-Increase throttle: Left Control
+* (ie: Rear Camera, Belly Camera & Cockpit Camera) 
 
-Change Cameras: V (ie: Rear Camera, Belly Camera & Cockpit Camera)
 
 
 Manual Setup Instruction:
@@ -129,95 +130,7 @@ Scale:    X: 1 Y: 1 Z: 1
 
 -----------------------------------------------------------------------------------
 
-Step 5: Add Input: "Heli Roll"
-
------------------------------------------------------------------------------------
-
-
-In Edit -> Project Settings -> Input Manager:
-
-Add Input Axes: "Heli Roll"
-
-Name: Roll
-Negative Button: left
-Positive Button: right
-Alt Negative Button: a
-Alt Positive Button: d
-Gravity: 3
-Dead: 0.001
-Sensitivity: 3
-Snap: True (checked)
-Invert: False (unchecked)
-Type: Key or Mouse Button
-Axis: X axis
-Joy Num: Get Motion from all Joysticks
-
-Note: this is using the old input system and while yes, you could modify the script
-for new input system usage, currently that is not covered in the scope of this 
-setup at this time.
-
-
------------------------------------------------------------------------------------
-
-Step 6: Add Input: "Heli Pitch"
-
------------------------------------------------------------------------------------
-
-
-In Edit -> Project Settings -> Input Manager:
-
-Add Input Axes: "Heli Pitch"
-
-Name: Pitch
-Negative Button: down
-Positive Button: up
-Alt Negative Button: s
-Alt Positive Button: w
-Gravity: 3
-Dead: 0.001
-Sensitivity: 3
-Snap: True (checked)
-Invert: False (unchecked)
-Type: Key or Mouse Button
-Axis: X axis
-Joy Num: Get Motion from all Joysticks
-
-Note: this is using the old input system and while yes, you could modify the script
-for new input system usage, currently that is not covered in the scope of this 
-setup at this time.
-
-
------------------------------------------------------------------------------------
-
-Step 7: Add Input: "Heli Yaw"
-
------------------------------------------------------------------------------------
-
-
-In Edit -> Project Settings -> Input Manager:
-
-Add Input Axes: "Heli Yaw"
-
-Name: Yaw
-Negative Button: q
-Positive Button: e
-Gravity: 3
-Dead: 0.001
-Sensitivity: 3
-Snap: True (checked)
-Invert: False (unchecked)
-Type: Key or Mouse Button
-Axis: X axis
-Joy Num: Get Motion from all Joysticks
-
-Note: this is using the old input system and while yes, you could modify the script
-for new input system usage, currently that is not covered in the scope of this 
-setup at this time.
-
-
------------------------------------------------------------------------------------
-
-Step 8: Add Model(s): "Helicopter Land" & "MD-500"
+Step 5: Add Model(s): "Helicopter Land" & "MD-500"
 
 -----------------------------------------------------------------------------------
 
@@ -304,7 +217,7 @@ convex: true
 
 -----------------------------------------------------------------------------------
 
-Step 9: Add: "Camera(s)" to model "MD-500" object
+Step 6: Add: "Camera(s)" to model "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -381,7 +294,7 @@ HeliPad
 
 -----------------------------------------------------------------------------------
 
-Step 10: Add Script: "HelicopterController.cs" to model "MD-500" object
+Step 7: Add Script: "HelicopterController.cs" to model "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -393,7 +306,7 @@ Add Component: HelicopterController (BasicHelicopterController)
 
 -----------------------------------------------------------------------------------
 
-Step 11: Modify Settings for: "HelicopterController (Script)" 
+Step 8: Modify Settings for: "HelicopterController (Script)" 
 
 -----------------------------------------------------------------------------------
 
@@ -405,14 +318,6 @@ instead. So, in saying such, your settings should simply look like such:
 
 Script: HelicopterController
 
-Inputs:
--------
-
-Heli Roll Input: Heli Roll
-Heli Pitch Input: Heli Pitch
-Heli Yaw Input: Heli Yaw
-Min Throttle Key: Left Shift
-Max Throttle Key: Left Control
 
 Components:
 -----------
@@ -447,7 +352,7 @@ Airspeed Type: Mph *
 
 * or Kmh depending on your desired choice
 
-Max Airspeed: 152 *
+Max Airspeed: 76 *
 
 * 152 is max suggested for Mph else say 244 for Kmh for example if such was
   selected
@@ -467,10 +372,15 @@ Audio:
 Audio Source: MD-500 (Audio Source)
 Rotor Sound: Helicopter_Rotor
 
+Input Actions:
+--------------
+
+Helicopter Controls: HelicopterControls (Input Action Asset)
+
 
 -----------------------------------------------------------------------------------
 
-Step 12: Modify Settings for: "Rigidbody (Component)" 
+Step 9: Modify Settings for: "Rigidbody (Component)" 
 
 -----------------------------------------------------------------------------------
 
@@ -484,7 +394,7 @@ Mass: 360
 
 -----------------------------------------------------------------------------------
 
-Step 13: Modify Settings for: "Mesh Collider (Component)" 
+Step 10: Modify Settings for: "Mesh Collider (Component)" 
 
 -----------------------------------------------------------------------------------
 
@@ -498,7 +408,7 @@ Convex: True (Bool checked)
 
 -----------------------------------------------------------------------------------
 
-Step 14: Outside of HelicopterController: Create Empty Game Object: "Interface"
+Step 11: Outside of HelicopterController: Create Empty Game Object: "Interface"
 
 -----------------------------------------------------------------------------------
 
@@ -517,7 +427,7 @@ Layer: UI
 
 -----------------------------------------------------------------------------------
 
-Step 15: In "Canvas": add as child: An Empty called: "VehiclesHUD"
+Step 12: In "Canvas": add as child: An Empty called: "VehiclesHUD"
 
 -----------------------------------------------------------------------------------
 
@@ -540,7 +450,7 @@ Height: 300
 
 -----------------------------------------------------------------------------------
 
-Step 16: In "VehiclesHUD": add child: (Text-TexMeshPro) called: "Helicopter_HUD"
+Step 13: In "VehiclesHUD": add child: (Text-TexMeshPro) called: "Helicopter_HUD"
 
 -----------------------------------------------------------------------------------
 
@@ -610,7 +520,7 @@ EventSystem
 
 -----------------------------------------------------------------------------------
 
-Step 17: Exit "Interface" & Add Script: "CameraSwitcher.cs" to "MD-500" object
+Step 14: Exit "Interface" & Add Script: "CameraSwitcher.cs" to "MD-500" object
 
 -----------------------------------------------------------------------------------
 
@@ -625,7 +535,7 @@ Then re-enable the previously disabled camera named: "Belly Camera"
 
 -----------------------------------------------------------------------------------
 
-Step 18: Modify Settings for: "Camera Switcher (Script)" 
+Step 15: Modify Settings for: "Camera Switcher (Script)" 
 
 -----------------------------------------------------------------------------------
 
@@ -652,21 +562,6 @@ Optional: (Controller only) Compass Usage
 Note: Lastly, if you would like to have the compass for controller only usage
 you need to next follow the Helicopter Compass (Controller Only) setup steps
 to finalize that part of the setup steps!
-
-
------------------------------------------------------------------------------------
-
-Optional: Cursor Lock
-
------------------------------------------------------------------------------------
-
-
-If you would like Cursor Lock, please note that such was recently removed from 
-the HelicopterController script as such made sense to remove such and add an 
-optional CursorLock.cs script if needed.
-
-If such so is desired, well, you can simply attach the CursorLock.cs script to 
-the player / controller.
 
 
 -----------------------------------------------------------------------------------
