@@ -9,12 +9,26 @@ Create a "Basic Helicopter Controller" for your Unity projects.
 
 NOTE: This project was developed while / for using Unity 2021+ & 2022+ 
 
-NOTE: This uses the "New Input System", so as such depending on
-what version of Unity you may be using it may be necessary to make sure such
-or both is enabled in project settings.
+New_Input_System Directory NOTE:
 
-Also note: currently while there are new input system variants provided, some of the related documentations for theses still have old documentations in such such and still need to be edited to reflect any such setup changes and will be edited hopefully soon as some further free time allows.
+NOTE: This currently uses the New Input System (ie: Unity 21 - 22 variant provided), so as such depending on what version of Unity you may be using it may be necessary to make sure such or both is enabled in project settings.
 
+Also note: currently while there are new input system variants provided, some of the related documentations for those still have old documentations in such such and still need to be edited to reflect any such setup changes and will be edited hopefully soon as some further free time allows.
+
+New_Input_System Directory Documentations NOTE: If there is any confusion with any documentation during setup in regards to "Input Actions", just note the following "Input Action Assets" found below:
+
+
+For player:
+
+Input Actions:
+
+Player Controls: PlayerControls (Input Action Asset)
+
+For vehicle:
+
+Input Actions:
+
+Helicopter Controls: HelicopterControls (Input Action Asset)
 
 
 
