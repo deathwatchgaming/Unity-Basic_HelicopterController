@@ -118,7 +118,7 @@ namespace BasicHelicopterController
         
             [Tooltip("The Maximum Airspeed Amount For Example: Say 152 For MPH Or Say 244 For KMH")]
             // float _maxAirspeed mph is default (152mph)
-            [SerializeField] private float _maxAirspeed = 152;
+            [SerializeField] private float _maxAirspeed = 76;
 
         // HUD
         [Header("HUD")]

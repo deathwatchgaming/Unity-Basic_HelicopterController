@@ -7,6 +7,13 @@ Create a "Basic Helicopter Controller" for your Unity projects.
 
 ![Preview](https://raw.githubusercontent.com/deathwatchgaming/Unity-Basic_HelicopterController/refs/heads/main/Previews/Helicopter-SideView1.png)
 
+
+Release Intentions Note:
+------------------------
+
+The intention of this release was to provide basic vehicle functionality as a starting point as base fully functional in terms of an opinion of basic but leave out optional continuances in the hopes that this will be used as starting point / base for folks to then as such continue on with and improve upon.
+
+
 NOTE: This project was developed while / for using Unity 2021+ & 2022+ & Unity 6
 
 NOTE: This currently still uses the "Old Input System", so as such depending on
