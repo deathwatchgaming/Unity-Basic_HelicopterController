@@ -1,5 +1,5 @@
 /*
- * Name: Basic Helicopter Controller
+ * Name: Basic Helicopter Controller (New Input System)
  * File: HelicopterController.cs
  * Author: DeathwatchGaming
  * License: MIT
@@ -7,9 +7,10 @@
 */
 
 // Using
-using UnityEngine; 
-using System;
 using TMPro;
+using System; 
+using UnityEngine;
+using UnityEngine.InputSystem; 
 
 // namespace BasicHelicopterController
 namespace BasicHelicopterController
@@ -34,29 +35,6 @@ namespace BasicHelicopterController
     // public class HelicopterController
     public class HelicopterController : MonoBehaviour 
     {
-        // Header Inputs
-        [Header("Inputs")]
-        
-            [Tooltip("Heli Roll Movement Input String")]
-            // private string _heliRollInput
-            [SerializeField] private string _heliRollInput = "Heli Roll";
-
-            [Tooltip("Heli Pitch Movement Input String")]
-            // private string _heliPitchInput
-            [SerializeField] private string _heliPitchInput = "Heli Pitch";
-
-            [Tooltip("Heli Yaw Movement Input String")]
-            // private string _heliYawInput
-            [SerializeField] private string _heliYawInput = "Heli Yaw";
-
-            [Tooltip("Minimum Throttle Input Key")]
-            // private KeyCode _minThrottleKey
-            [SerializeField] private KeyCode _minThrottleKey = KeyCode.LeftShift;
-
-            [Tooltip("Maximum Throttle Input Key")]
-            // private KeyCode _maxThrottleKey
-            [SerializeField] private KeyCode _maxThrottleKey = KeyCode.LeftControl;        
-
         // Components
         [Header("Components")]
 
@@ -72,41 +50,41 @@ namespace BasicHelicopterController
         [Header("Rb Adjustments")]
 
             [Tooltip("The Rigidbody Mass")] 
-            // private float _centerOfMassOffset
+            // float _centerOfMassOffset
             [SerializeField] private float _rigidbodyMass = 360f;
 
             [Tooltip("The Center of Mass Offset")] 
-            // private Vector3 _centerOfMassOffset
+            // Vector3 _centerOfMassOffset
             [SerializeField] private Vector3 _centerOfMassOffset = new Vector3(0.0f, 0.7f, 1.0f);
 
         // Transforms
         [Header("Transforms")] 
 
             [Tooltip("The Top Rotor Transform")]
-            // private Transform _rotorsTransformTop   
+            // Transform _rotorsTransformTop   
             [SerializeField] private Transform _rotorsTransformTop;
 
             [Tooltip("The Tail Rotor Transform")]
-            // private Transform _rotorsTransformTail
+            // Transform _rotorsTransformTail
             [SerializeField] private Transform _rotorsTransformTail;
 
          // Amounts
         [Header("Amounts")]
 
             [Tooltip("The Sensitivity Amount")]
-            // private float _sensitivity
+            // float _sensitivity
             [SerializeField] private float _sensitivity = 500f;
 
             [Tooltip("The Throttle Amount")]
-            // private float _throttleAmount
+            // float _throttleAmount
             [SerializeField] private float _throttleAmount = 25f;
 
             [Tooltip("The Max Thrust Amount")]
-            // private float _maxThrust
+            // float _maxThrust
             [SerializeField] private float _maxThrust = 5f;
 
             [Tooltip("The Rotor Speed Modifier")]        
-            // private float _rotorSpeedModifier
+            // float _rotorSpeedModifier
             [SerializeField] private float _rotorSpeedModifier = 10f;
 
         // Speed
@@ -124,33 +102,70 @@ namespace BasicHelicopterController
         [Header("HUD")]
 
             [Tooltip("The Interface TextMeshPro HUD")]
-            // private TextMeshProUGUI _heliHUD
+            // TextMeshProUGUI _heliHUD
             [SerializeField] private TextMeshProUGUI _heliHUD;
 
         // Audio
         [Header("Audio")]
 
             [Tooltip("The Audio Source")]
-            // private AudioSource _audioSource
+            // AudioSource _audioSource
             [SerializeField] private AudioSource _audioSource;
 
             [Tooltip("The Rotor Sound Audio Clip")]
-            // private AudioClip _rotorSound
+            // AudioClip _rotorSound
             [SerializeField] private AudioClip _rotorSound;
-        
-        // private Bool _rotorCheck
+
+        // Input Actions
+        [Header("Input Actions")]
+
+            [Tooltip("The input action asset")]
+            // InputActionAsset _helicopterControls
+            [SerializeField] private InputActionAsset _helicopterControls;
+
+        // InputAction _moveTwoAction (Pitch & Roll)
+        private InputAction _moveTwoAction;
+
+        // Vector2 _moveTwoInput (Pitch & Roll)
+        private Vector2 _moveTwoInput;
+
+        // InputAction _moveOneAction (Yaw)
+        private InputAction _moveOneAction;
+
+        // Vector2 _moveOneInput (Yaw)
+        private Vector2 _moveOneInput;
+
+        // InputAction _maxThrottleAction (Max)
+        private InputAction _maxThrottleAction;
+
+        // InputAction _minThrottleAction (Min)
+        private InputAction _minThrottleAction;
+
+        // bool _maxThrottleIsPressed
+        private bool _maxThrottleIsPressed;
+
+        // bool _minThrottleIsPressed
+        private bool _minThrottleIsPressed;
+
+        // bool _maxThrottleWasPressed
+        private bool _maxThrottleWasPressed;
+
+        // bool _minThrottleWasPressed
+        private bool _minThrottleWasPressed;        
+
+        // bool _rotorCheck
         private bool _rotorCheck = false;
 
-        // private float _throttle  
+        // float _throttle  
         private float _throttle;
        
-        // private float _heliRoll
+        // float _heliRoll
         private float _heliRoll;
 
-        // private float _heliPitch
+        // float _heliPitch
         private float _heliPitch;
 
-        // private float _heliYaw
+        // float _heliYaw
         private float _heliYaw;
 
         // Awake is called even if the script is disabled
@@ -177,13 +192,86 @@ namespace BasicHelicopterController
             // _audioSource GetComponent AudioSource
             _audioSource = GetComponent<AudioSource>();
 
+            // Cursor lockState is CursorLockMode Locked
+            Cursor.lockState = CursorLockMode.Locked;
+
+            // Cursor visible is false
+            Cursor.visible = false;
+
+            // Input Actions
+
+            // _moveTwoAction
+            _moveTwoAction = _helicopterControls.FindActionMap("Helicopter").FindAction("MoveTwo");
+
+            // _moveTwoAction performed
+            _moveTwoAction.performed += context => _moveTwoInput = context.ReadValue<Vector2>();
+
+            // _moveTwoAction canceled
+            _moveTwoAction.canceled += context => _moveTwoInput = Vector2.zero;
+
+            // _moveOneAction
+            _moveOneAction = _helicopterControls.FindActionMap("Helicopter").FindAction("MoveOne");
+
+            // _moveOneAction performed
+            _moveOneAction.performed += context => _moveOneInput = context.ReadValue<Vector2>();
+
+            // _moveOneAction canceled
+            _moveOneAction.canceled += context => _moveOneInput = Vector2.zero;
+
+            // _maxThrottleAction
+            _maxThrottleAction = _helicopterControls.FindActionMap("Helicopter").FindAction("MaxThrottle");
+
+            // _minThrottleAction
+            _minThrottleAction = _helicopterControls.FindActionMap("Helicopter").FindAction("MinThrottle");
+
         } // close private void Awake
         
+        // private void OnEnable
+        private void OnEnable()
+        {
+            // Input Actions Enable
+
+            // _moveTwoAction Enable
+            _moveTwoAction.Enable();
+
+            // _moveOneAction Enable
+            _moveOneAction.Enable();
+
+            // _maxThrottleAction Enable
+            _maxThrottleAction.Enable();
+
+            // _minThrottleAction Enable
+            _minThrottleAction.Enable();
+
+        } // close private void OnEnable
+
+        // private void OnDisable
+        private void OnDisable()
+        {
+            // Input Actions Disable
+
+            // _moveTwoAction Disable
+            _moveTwoAction.Disable();
+
+            // _moveOneAction Disable
+            _moveOneAction.Disable();
+
+            // _maxThrottleAction Disable
+            _maxThrottleAction.Disable();
+
+            // _minThrottleAction Disable
+            _minThrottleAction.Disable();
+
+        } // close private void OnDisable
+
         // Update is called every frame
 
         // private void Update
         private void Update()
         {
+            // Handle Press State
+            HandlePressState();
+
             // Handle Inputs
             HandleInputs();
 
@@ -215,31 +303,48 @@ namespace BasicHelicopterController
             // _rigidbody AddTorque
             _rigidbody.AddTorque(transform.up * _heliYaw * _sensitivity); 
 
-        } // close private void FixedUpdate    
+        } // close private void FixedUpdate
+
+        // private void HandlePressState
+        private void HandlePressState()
+        {
+            // _maxThrottleIsPressed
+            _maxThrottleIsPressed = _maxThrottleAction.IsPressed();
+
+            // _minThrottleIsPressed
+            _minThrottleIsPressed = _minThrottleAction.IsPressed();
+
+            // _maxThrottleWasPressed
+            _maxThrottleWasPressed = _maxThrottleAction.WasPressedThisFrame();
+
+            // _minThrottleWasPressed
+            _minThrottleWasPressed = _minThrottleAction.WasPressedThisFrame();            
+
+        } // close private void HandlePressState
         
         // private void HandleInputs
         private void HandleInputs()
         {
-            // _heliRoll
-            _heliRoll = Input.GetAxis(_heliRollInput);
+            // _heliRoll (Roll)
+            _heliRoll = _moveTwoInput.x;
 
-            // _heliPitch
-            _heliPitch = Input.GetAxis(_heliPitchInput); 
+            // _heliPitch (Pitch)
+            _heliPitch = _moveTwoInput.y; 
 
-            // _heliYaw
-            _heliYaw = Input.GetAxis(_heliYawInput);
+            // _heliYaw (Yaw)
+            _heliYaw = _moveOneInput.x;
 
             // _rotorCheck is false
             _rotorCheck = false;
             
             // if Input GetKey _maxThrottleKey
-            if (Input.GetKey(_maxThrottleKey))
+            if (_maxThrottleIsPressed)
             {
                 // _throttle
                 _throttle += Time.deltaTime * _throttleAmount;
                 
                 // if Input GetKeyDown _maxThrottleKey
-                if (Input.GetKeyDown(_maxThrottleKey))
+                if (_maxThrottleWasPressed)
                 {
                     // _rotorCheck is true
                     _rotorCheck = true;
@@ -249,13 +354,13 @@ namespace BasicHelicopterController
             } // close if Input GetKey _maxThrottleKey
             
             // else if Input GetKey _minThrottleKey
-            else if (Input.GetKey(_minThrottleKey))
+            else if (_minThrottleIsPressed)
             {
                 // _throttle
                 _throttle -= Time.deltaTime * _throttleAmount;
-                
+
                 // if Input GetKeyDown _minThrottleKey
-                if (Input.GetKeyDown(_minThrottleKey))
+                if (_minThrottleWasPressed)
                 {
                     // _rotorCheck is true
                     _rotorCheck = true;
@@ -364,7 +469,7 @@ namespace BasicHelicopterController
             // Tail Rotor Rotate Roll or Yaw is 0
 
             // if Input GetAxis _heliRollInput is 0 or Input GetAxis _heliYawInput is 0
-            if (Input.GetAxis(_heliRollInput) == 0 || Input.GetAxis(_heliYawInput) == 0)
+            if (_heliRoll == 0 || _heliYaw == 0)
             {
                 // _rotorsTransformTail Rotate
                 _rotorsTransformTail.Rotate(Vector3.right * _throttle * _rotorSpeedModifier);
@@ -374,7 +479,7 @@ namespace BasicHelicopterController
             // Tail Rotor Yaw Rotate
 
             // if Input GetAxis _heliYawInput is less than 0
-            if (Input.GetAxis(_heliYawInput) < 0)
+            if (_heliYaw < 0)
             {
                 // _rotorsTransformTail Rotate
                 _rotorsTransformTail.Rotate(Vector3.left * (_maxThrust * _throttle) * _rotorSpeedModifier);
@@ -382,7 +487,7 @@ namespace BasicHelicopterController
             } // close if Input GetAxis _heliYawInput is less than 0
 
             // if Input GetAxis _heliYawInput is greater than 0
-            if (Input.GetAxis(_heliYawInput) > 0)
+            if (_heliYaw > 0)
             {
                 // _rotorsTransformTail Rotate
                 _rotorsTransformTail.Rotate(Vector3.right * (_maxThrust * _throttle) * _rotorSpeedModifier);
@@ -392,7 +497,7 @@ namespace BasicHelicopterController
             // Tail Rotor Roll Rotate
 
             // if Input GetAxis _heliRollInput is less than 0
-            if (Input.GetAxis(_heliRollInput) < 0)
+            if (_heliRoll < 0)
             {
                 // _rotorsTransformTail Rotate
                 _rotorsTransformTail.Rotate(Vector3.left * (_maxThrust * _throttle) * _rotorSpeedModifier);
@@ -400,7 +505,7 @@ namespace BasicHelicopterController
             } // close if Input GetAxis _heliRollInput is less than 0
 
             // if Input GetAxis _heliRollInput is greater than 0
-            if (Input.GetAxis(_heliRollInput) > 0)
+            if (_heliRoll > 0)
             {
                 // _rotorsTransformTail Rotate
                 _rotorsTransformTail.Rotate(Vector3.right * (_maxThrust * _throttle) * _rotorSpeedModifier);

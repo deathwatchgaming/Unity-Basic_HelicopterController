@@ -1,5 +1,5 @@
 /*
- * File: Helicopter Entry
+ * File: Helicopter Entry (New Input System)
  * Name: HelicopterEntry.cs
  * Author: DeathwatchGaming
  * License: MIT
@@ -8,8 +8,9 @@
 
 // using
 using UnityEngine;
-using System.Collections;
 using NavigationControl;
+using System.Collections;
+using UnityEngine.InputSystem;
 
 // namespace BasicHelicopterController
 namespace BasicHelicopterController
@@ -20,17 +21,6 @@ namespace BasicHelicopterController
     // public class HelicopterEntry 
     public class HelicopterEntry : MonoBehaviour
     {
-        // Input Customizations
-        [Header("Input Customizations")] 
-
-            [Tooltip("The vehicle entry key code")]
-            // KeyCode _enterKey
-            [SerializeField] private KeyCode _enterKey = KeyCode.E;
-
-            [Tooltip("The vehicle exit key code")]
-            // KeyCode _exitKey
-            [SerializeField] private KeyCode _exitKey = KeyCode.F;
-
         // Game Objects
         [Header("Game Objects")]
 
@@ -57,6 +47,43 @@ namespace BasicHelicopterController
             // bool _inHelicopter is false
             [SerializeField] private bool _inHelicopter = false;
         
+        // Cameras
+        [Header("Cameras")]
+
+            [Tooltip("The cameras ie: 0: Rear Camera, 1: Belly Camera & 2: Cockpit Camera")]
+            // private Camera[] _cameras
+            [SerializeField] private Camera[] _cameras;
+
+        // Compass
+        [Header("Compass")]
+
+            [Tooltip("The player compass")]
+            // PlayerCompass _playerCompass
+            [SerializeField] private PlayerCompass _playerCompass;
+            
+            [Tooltip("The basic helicopter compass")]
+            // BasicHelicopterCompass _helicopterCompass
+            [SerializeField] private BasicHelicopterCompass _helicopterCompass; 
+
+        // Input Actions
+        [Header("Input Actions")]
+
+            [Tooltip("The input action asset")]
+            // InputActionAsset _helicopterControls
+            [SerializeField] private InputActionAsset _helicopterControls;
+
+        // InputAction _helicopterEnterAction
+        private InputAction _helicopterEnterAction;
+
+        // InputAction _helicopterExitAction
+        private InputAction _helicopterExitAction;
+
+        // bool _enterButton
+        private bool _enterButton;
+
+        // bool _exitButton
+        private bool _exitButton;             
+
         // HelicopterController _helicopterScript
         private HelicopterController _helicopterScript;
 
@@ -87,10 +114,6 @@ namespace BasicHelicopterController
         // Rigidbody _rigidbody
         private Rigidbody _rigidbody;
 
-        [Tooltip("The cameras ie: 0: Rear Camera, 1: Belly Camera & 2: Cockpit Camera")]
-        // private Camera[] _cameras
-        [SerializeField] private Camera[] _cameras;
-
         // GameObject FindInActiveObjectByName
         GameObject FindInActiveObjectByName(string name)
         {
@@ -120,18 +143,40 @@ namespace BasicHelicopterController
 
         } // close GameObject FindInActiveObjectByName
 
-        // Compass
-        [Header("Compass")]
-
-            [Tooltip("The player compass")]
-            // PlayerCompass _playerCompass
-            [SerializeField] private PlayerCompass _playerCompass;
-            
-            [Tooltip("The basic helicopter compass")]
-            // BasicHelicopterCompass _helicopterCompass
-            [SerializeField] private BasicHelicopterCompass _helicopterCompass;  
-
         //public static HelicopterEntry _helicopterEntry;
+
+        // private void Awake
+        private void Awake()
+        {
+            // _helicopterEnterAction
+            _helicopterEnterAction = _helicopterControls.FindActionMap("Helicopter").FindAction("Enter");
+
+            // _helicopterExitAction
+            _helicopterExitAction = _helicopterControls.FindActionMap("Helicopter").FindAction("Exit");
+
+        } // closeprivate void Awake
+
+        // private void OnEnable
+        private void OnEnable()
+        {
+            // _helicopterEnterAction Enable
+            _helicopterEnterAction.Enable();
+
+            // _helicopterExitAction Enable
+            _helicopterExitAction.Enable();
+
+        }  // close private void OnEnable
+
+        // private void OnDisable
+        private void OnDisable()
+        {
+            // _helicopterEnterAction Disable
+            _helicopterEnterAction.Disable();
+
+            // _helicopterExitAction Disable
+            _helicopterExitAction.Disable();
+
+        } // closeprivate void OnDisable
 
         // private void Start
         private void Start() 
@@ -234,8 +279,30 @@ namespace BasicHelicopterController
         // private void Update
         private void Update()
         {
+            // if_helicopterEnterAction triggered
+            if (_helicopterEnterAction.triggered)
+            {
+                // _enterButton is true
+                _enterButton = true;
+
+                // _exitButton is false
+                _exitButton = false;
+
+            } // close if_helicopterEnterAction triggered
+
+            // if _helicopterExitAction triggered
+            if (_helicopterExitAction.triggered)
+            {
+                // _enterButton is false
+                _enterButton = false;
+
+                // _exitButton is true
+                _exitButton = true;
+
+            } // close if _helicopterExitAction triggered
+
             // if _inHelicopter and Input GetKey KeyCode _exitKey
-            if (_inHelicopter && Input.GetKey(_exitKey))
+            if (_inHelicopter && _exitButton == true)
             {
                 // _player SetActive is true
                 _player.SetActive(true);
@@ -312,7 +379,7 @@ namespace BasicHelicopterController
             } // close if not _inHelicopter and gameObject tag is Player
             
             // if not _inHelicopter and gameObject tag is Player and Input GetKey KeyCode _enterKey
-            if (!_inHelicopter && other.gameObject.tag == "Player" && Input.GetKey(_enterKey))
+            if (!_inHelicopter && other.gameObject.tag == "Player" && _enterButton == true)
             {
                 // _interfaceTextObject SetActive is false
                 _interfaceTextObject.SetActive(false);

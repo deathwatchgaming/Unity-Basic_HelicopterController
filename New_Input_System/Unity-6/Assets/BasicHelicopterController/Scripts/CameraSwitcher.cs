@@ -1,5 +1,5 @@
 /*
- * Name: Camera Switcher
+ * Name: Camera Switcher (New Input System)
  * File: CameraSwitcher.cs
  * Author: DeathwatchGaming
  * License: MIT
@@ -8,6 +8,7 @@
 
 // using
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 // namespace BasicHelicopterController
 namespace BasicHelicopterController
@@ -19,15 +20,45 @@ namespace BasicHelicopterController
         // private Camera[] _cameras
         [SerializeField] private Camera[] _cameras;
 
+        // Input Actions
+        [Header("Input Actions")]
+
+            [Tooltip("The input action asset")]
+            // InputActionAsset _helicopterControls
+            [SerializeField] private InputActionAsset _helicopterControls;
+
         // private int currentCameraIndex
         private int currentCameraIndex;
 
-        // Input
-        [Header("Input")]
+        // InputAction _helicopterCameraAction
+        private InputAction _helicopterCameraAction;
 
-            [Tooltip("The camera switch keycode ie: V key")]
-            // private KeyCode _cameraSwitchKey
-            [SerializeField] private KeyCode _cameraSwitchKey = KeyCode.V;
+        // bool _cameraSwitchValue
+        private bool _cameraSwitchValue;
+
+        // private void Awake
+        private void Awake()
+        {
+            // _helicopterCameraAction
+            _helicopterCameraAction = _helicopterControls.FindActionMap("Helicopter").FindAction("CameraSwitch");
+
+        } // close private void Awake
+
+        // private void OnEnable
+        private void OnEnable()
+        {
+            // _helicopterCameraAction Enable
+            _helicopterCameraAction.Enable();
+
+        } // close private void OnEnable
+
+        // private void OnDisable
+        private void OnDisable()
+        {
+            // _helicopterCameraAction Disable
+            _helicopterCameraAction.Disable();
+
+        } // close private void OnDisable
 
         // Use Start for initialization
         
@@ -67,12 +98,15 @@ namespace BasicHelicopterController
         // private void Update
         private void Update() 
         {
+            // _cameraSwitchValue
+            _cameraSwitchValue = _helicopterCameraAction.WasPressedThisFrame();
+
             // If the change camera button is pressed switch to the next camera
             // Set the camera at the current index to inactive and set the next one in the array to active
             // When we reach the end of the camera array move back to the beginning or the array
 
             // if Input Get Key Down _cameraSwitchKey
-            if (Input.GetKeyDown(_cameraSwitchKey))
+            if (_cameraSwitchValue)
             {
                 // Change Camera
                 ChangeCamera();
