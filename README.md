@@ -45,10 +45,8 @@ Old_Input_System:
 * Roll: A & D
 * Pitch: S & W
 * Yaw:  Q & E
-
 * Decrease throttle: Left Shift
 * Increase throttle: Left Control
-
 * Change Cameras: V (ie: Rear Camera, Belly Camera & Cockpit Camera)
 
 
